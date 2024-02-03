@@ -277,6 +277,11 @@ select {
 
 /* BILL PAGE */
 
+#bill {
+  margin: 0 20px;
+  margin-top: 140px;
+}
+
 .billpage__container {
   display: flex;
   justify-content: space-around;
@@ -300,4 +305,74 @@ select {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.author__name {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.author__wing {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.email__container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.email__text {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+
+.email__button {
+  margin-top: 10px;
+  background-color: #000000;
+  transition: all 300ms ease;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
+
+
+.bill__middle--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bill__middle--title {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bill__middle--date {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.bill__middle--sponsors {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.bill__middle--summary {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 60px;
+  max-width: 600px;
 }
