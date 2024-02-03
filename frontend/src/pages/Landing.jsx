@@ -15,27 +15,29 @@ const Landing = () => {
       <div className="hero__inner">
         <Nav />
         <div className="divider"></div>
-        <div className="home__hero--headline">
-          <div className="home__hero-1">
-            <div>Not</div>
+        <div className="hero__below-divider">
+          <div className="home__hero--headline">
+            <div className="home__hero-1">
+              <div>Not</div>
+            </div>
+            <div className="home__hero-2">
+              <div>Just</div>
+            </div>
+            <div className="home__hero-3">
+              <div>Faster,</div>
+            </div>
+            <div className="home__hero-4">
+              <div>Better.</div>
+            </div>
           </div>
-          <div className="home__hero-2">
-            <div>Just</div>
-          </div>
-          <div className="home__hero-3">
-            <div>Faster,</div>
-          </div>
-          <div className="home__hero-4">
-            <div>Better.</div>
+          <h1 className="hero__h1">
+            Looking through bills is impossible, we make it easy to see bills
+            and see what other people are saying.
+          </h1>
+          <div className="hero__search--outer">
+            <Searchbar />
           </div>
         </div>
-        <h1 className="hero__h1">
-          Looking through bills is impossible, we make it easy to see bills and
-          see what other people are saying.
-        </h1>
-      </div>
-      <div className="hero__search--outer">
-        <Searchbar />
       </div>
     </section>
   );
