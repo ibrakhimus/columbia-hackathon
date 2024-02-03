@@ -1,6 +1,7 @@
 import requests
 import json
 from flask import Flask
+from image_search import image_search
 
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
@@ -28,6 +29,10 @@ def search(query):
     # perform a search for the data from .json file
     # using vector
     return query 
+
+@app.route('/get_image/<query>', methods=['GET'])
+def get_image(query):
+    return image_search(query)
 
 
 if __name__ == '__main__':
