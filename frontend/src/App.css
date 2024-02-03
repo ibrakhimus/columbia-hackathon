@@ -34,9 +34,15 @@ nav {
     box-shadow: 0 12px 18px rgba(0, 0, 0, .2);
 }
 
+.row {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
 .nav__row {
     padding: 0 36px;
 }
+
 
 .nav__list {
     display: flex;
@@ -59,3 +65,6 @@ video {
 .hero__inner {
   position: relative;
 }
+
+
+/* BILLS */
