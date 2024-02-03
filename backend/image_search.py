@@ -4,6 +4,7 @@ import random
 ENDPOINT = "https://serpapi.com/search.json"
 API_KEY = '04e947af88ca30f1f0c38e03150ad446a2fc4b7fc424bb0694d863dcc8274037'
 
+# reference: https://serpapi.com/search-api
 def image_search(query):
     params = {
         'q': query,
