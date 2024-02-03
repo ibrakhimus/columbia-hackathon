@@ -42,9 +42,17 @@ async def get_news(query):
 def get_contact_info():
     return "contact info"
 
-@app.route("/get_doc/<text><number>", methods = "GET")
+@app.route("/get_doc/<text>/<number>", methods = ["GET"])
 def get_doc(text, number):
     return bill_search(text, number)
+
+@app.route("/get_timeline/<bill_slug>", methods = ["GET"])
+async def get_timeline(bill_slug):
+    url = "https://api.propublica.org/congress/v1/118/bills/{}.json".format(bill_slug)
+    res = requests.get(url, headers={'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'})
+    timeline = res.json()["results"][0]["actions"]
+
+    return timeline
 
 if __name__ == '__main__':
     app.run(debug=False)
