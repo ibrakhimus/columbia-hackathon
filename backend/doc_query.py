@@ -1,7 +1,5 @@
 import chromadb.utils.embedding_functions as embedding_functions
 import chromadb
-import torch
-import json
 from torch.nn.functional  import cosine_similarity
 
 client = chromadb.PersistentClient(path = "./db/")
@@ -12,10 +10,13 @@ openai_ef = embedding_functions.OpenAIEmbeddingFunction(
 
 collection = client.get_collection(name="bill_db", embedding_function=openai_ef)
 
-response = collection.query(
-    query_texts = ["DACA"],
-    n_results = 5,
-    include = ["documents"]
-)
+def bill_search(text, n_results = 1, include = ["documents"]):
+    response = collection.query(
+        query_texts = [text],
+        n_results = n_results,
+        include = include
+    )
+    return response
 
-print(response)
+if __name__ == "__main__":
+    print(bill_search("DACA", 1, ["documents", "metadatas", "distances"]))

@@ -1,8 +1,6 @@
 import chromadb.utils.embedding_functions as embedding_functions
 import chromadb
-import torch
 import json
-from torch.nn.functional  import cosine_similarity
 
 client = chromadb.PersistentClient(path = "./db/")
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
