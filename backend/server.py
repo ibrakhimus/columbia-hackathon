@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def hello():
-    "name, bill title, bill type, "
+
     return "theres nothing here bruh"
 
 @app.route('/search/<string:query>', methods=['GET'])
