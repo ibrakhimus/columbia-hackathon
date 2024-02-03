@@ -36,7 +36,6 @@ nav {
   align-items: center;
   margin: 36px auto;
   letter-spacing: -0.02em;
-  /* background-color: #fff; */
   border-radius: 16px;
   font-size: 16px;
   line-height: 1.05;
@@ -133,15 +132,6 @@ video {
   border-radius: 20px;
   border: none;
   box-shadow: 0 12px 30px 0 rgb(0 0 0 / 30%);
-}
-
-.search__btn:hover {
-  background-color: #000000;
-}
-
-.search__btn:hover i {
-  background-color: black;
-  color: white;
 }
 
 .loading {
@@ -249,7 +239,7 @@ video {
 }
 
 .bill__img--wrapper {
-  transition: all .25s ease;
+  transition: all 0.25s ease;
   cursor: pointer;
 }
 
@@ -267,7 +257,6 @@ video {
   border-radius: 5px;
   transition: all 0.25s ease;
 }
-
 
 .bill__title {
   font-size: 24px;

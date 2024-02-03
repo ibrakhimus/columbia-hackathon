@@ -5,9 +5,9 @@ import '../App.css'
 
 const Searchbar = () => {
     return (
-            <div class="search__container search__container--landing">
-                <input class="search__input" type="text" placeholder="Ex: Cars 3" onchange ="onSearchChange(event)"></input>
-                <button class="search__btn" name='movieName'>
+            <div className="search__container search__container--landing">
+                <input className="search__input" type="text" placeholder="Ex: Cars 3" onChange ="onSearchChange(event)"></input>
+                <button className="search__btn" name='movieName'>
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
