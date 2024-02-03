@@ -2,7 +2,7 @@ import requests
 import json
 from flask import Flask
 from image_search import image_search
-from doc_query import bill_searchfrom world_news import get_news
+from doc_query import bill_search 
 
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
