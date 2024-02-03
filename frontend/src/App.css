@@ -27,14 +27,15 @@ li {
 }
 
 nav {
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.75);
   max-width: 1200px;
-  padding: 18px 24px;
+  padding: 32px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 36px auto;
+  margin: 0 auto;
   letter-spacing: -0.02em;
-  background-color: #fff;
   border-radius: 16px;
   font-size: 16px;
   line-height: 1.05;
@@ -47,7 +48,7 @@ nav {
 }
 
 .nav__row {
-  padding: 0 36px;
+  padding: 24px;
 }
 
 .nav__list {
@@ -55,6 +56,7 @@ nav {
 }
 
 video {
+  z-index: -999;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -62,14 +64,24 @@ video {
   opacity: 0.9;
 }
 
+.hero__video--lighting {
+  z-index: -998;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0) 71%
+  );
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+}
+
 .search__container {
   width: 100%;
   display: flex;
-  margin: 60px 0;
-}
-
-.search__container--landing {
-  animation: fade-up 650ms 800ms backwards;
 }
 
 .search__input {
@@ -82,7 +94,7 @@ video {
   line-height: 40px;
   outline: none;
   padding: 0 15px;
-  transition:  all 300ms ease;
+  transition: all 300ms ease;
   width: 100%;
   font-size: 24px;
   padding-left: 25px;
@@ -100,7 +112,7 @@ video {
 
 .fa-spinner {
   background-color: black;
-  transition : all 300ms ease;
+  transition: all 300ms ease;
 }
 
 .search__btn {
@@ -115,15 +127,6 @@ video {
   border-radius: 20px;
   border: none;
   box-shadow: 0 12px 30px 0 rgb(0 0 0 / 30%);
-}
-
-.search__btn:hover {
-  background-color: #000000;
-}
-
-.search__btn:hover i{
-  background-color: black;
-  color: white;
 }
 
 .loading {
@@ -145,7 +148,6 @@ video {
   font-size: 11vw;
   font-weight: 700;
   line-height: 90%;
-  margin: 48px 0 0;
 }
 
 .home__hero-1,
@@ -185,6 +187,29 @@ video {
   line-height: 90%;
 }
 
+.hero__h1 {
+  margin: 0 auto;
+  line-height: 125%;
+  text-wrap: balance;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 500;
+  max-width: 750px;
+  text-align: center;
+}
+
+.hero__search--outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero__below-divider {
+  height: calc(100vh - 155.65px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 /* BILLS */
 
 .bills__container {
@@ -214,6 +239,16 @@ video {
   text-align: left !important;
 }
 
+.bill__img--wrapper {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.bill__img--wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0px 16px 0 rgb(0 0 0 / 60%);
+}
+
 .bill__img {
   width: 100%;
   height: 100%;
@@ -221,7 +256,7 @@ video {
   height: 540px;
   object-fit: cover;
   border-radius: 5px;
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 
 .bill__title {
@@ -249,4 +284,110 @@ select {
   font-size: 16px;
 }
 
+/* BILL PAGE */
 
+#bill {
+  margin: 0 20px;
+  margin-top: 140px;
+}
+
+.billpage__container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bill__author--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 30%);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.author__img--wrapper {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.author__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author__name {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.author__wing {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.email__container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.email__text {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+
+.email__button {
+  margin-top: 10px;
+  background-color: #000000;
+  transition: all 300ms ease;
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}
+
+
+.bill__middle--container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 30%);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.bill__middle--title {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bill__middle--date {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.bill__middle--sponsors {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.bill__middle--summary {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 60px;
+  max-width: 600px;
+}

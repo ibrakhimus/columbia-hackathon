@@ -1,12 +1,16 @@
 import React from "react";
 import Bill from "../components/Bill";
 import Searchbar from "../components/Searchbar";
+import Nav from "../components/Nav";
 
 const Bills = ({ policies }) => {
   return (
     <section id="bills">
       <div className="row">
-        <Searchbar />
+        <Nav />
+        <div className="hero__search--outer">
+          <Searchbar />
+        </div>
 
         <div className="bills__container">
           <Bill
