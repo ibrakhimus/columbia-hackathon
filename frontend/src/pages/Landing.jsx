@@ -27,6 +27,7 @@ const Landing = () => {
                 <div>Better.</div>
             </div>
         </div>
+        <h1 className="hero__h1">Looking through bills is impossible, we make it easy to see bills and see what other people are saying.</h1>
       </div>
     </section>
   );

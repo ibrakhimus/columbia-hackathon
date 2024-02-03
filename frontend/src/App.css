@@ -145,7 +145,8 @@ video {
   font-size: 11vw;
   font-weight: 700;
   line-height: 90%;
-  margin: 48px 0 0;
+  margin: 48px 0;
+
 }
 
 .home__hero-1,
@@ -183,6 +184,18 @@ video {
 .home__hero-4 {
   letter-spacing: -0.02em;
   line-height: 90%;
+}
+
+.hero__h1 {
+  margin: 0 auto;
+  line-height: 125%;
+  text-wrap: balance;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 500;
+  max-width: 750px;
+  text-align: center;
+
 }
 
 /* BILLS */
