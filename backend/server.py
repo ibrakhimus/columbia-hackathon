@@ -2,8 +2,8 @@ import requests
 import json
 from flask import Flask
 from image_search import image_search
-from doc_query import bill_search 
-
+from doc_query import bill_search
+from auto_email import support_email
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
 CONGRES_SESSION = "117"
@@ -53,6 +53,10 @@ async def get_timeline(bill_slug):
     timeline = res.json()["results"][0]["actions"]
 
     return timeline
+
+@app.route("/support_email/<short_name>")
+def support_email_data(short_name):
+    return support_email(short_name)
 
 if __name__ == '__main__':
     app.run(debug=False)
