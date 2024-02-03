@@ -12,7 +12,8 @@ const Landing = () => {
       />
       <div className="hero__inner">
         <Nav />
-        {/* <div className="home__hero--headline">
+        <div className="divider"></div>
+        <div className="home__hero--headline">
             <div className="home__hero-1">
                 <div>Not</div>
             </div>
@@ -25,7 +26,8 @@ const Landing = () => {
             <div className="home__hero-4">
                 <div>Better.</div>
             </div>
-        </div> */}
+        </div>
+        <h1 className="hero__h1">Looking through bills is impossible, we make it easy to see bills and see what other people are saying.</h1>
       </div>
     </section>
   );
