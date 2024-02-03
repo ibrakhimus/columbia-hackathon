@@ -248,6 +248,16 @@ video {
   text-align: left !important;
 }
 
+.bill__img--wrapper {
+  transition: all .25s ease;
+  cursor: pointer;
+}
+
+.bill__img--wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0px 16px 0 rgb(0 0 0 / 60%);
+}
+
 .bill__img {
   width: 100%;
   height: 100%;
@@ -257,6 +267,7 @@ video {
   border-radius: 5px;
   transition: all 0.25s ease;
 }
+
 
 .bill__title {
   font-size: 24px;
@@ -281,4 +292,31 @@ select {
   width: 100%;
   max-width: 200px;
   font-size: 16px;
+}
+
+/* BILL PAGE */
+
+.billpage__container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bill__author--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author__img--wrapper {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.author__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
