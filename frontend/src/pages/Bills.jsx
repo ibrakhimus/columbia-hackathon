@@ -8,7 +8,9 @@ const Bills = ({ policies }) => {
     <section id="bills">
       <div className="row">
         <Nav />
-        <Searchbar />
+        <div className="hero__search--outer">
+          <Searchbar />
+        </div>
 
         <div className="bills__container">
           <Bill
