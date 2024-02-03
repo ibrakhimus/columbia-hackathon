@@ -285,6 +285,11 @@ select {
 
 /* BILL PAGE */
 
+#bill {
+  margin: 0 20px;
+  margin-top: 140px;
+}
+
 .billpage__container {
   display: flex;
   justify-content: space-around;
