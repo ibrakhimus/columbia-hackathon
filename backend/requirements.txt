@@ -1,0 +1,4 @@
+chroma-hnswlib==0.7.3
+chromadb==0.4.22
+Flask==2.3.2
+Flask-Cors==4.0.0

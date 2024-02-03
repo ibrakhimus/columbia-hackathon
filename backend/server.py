@@ -2,7 +2,7 @@ import requests
 import json
 from flask import Flask
 from image_search import image_search
-from world_news import get_news
+from doc_query import bill_searchfrom world_news import get_news
 
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
@@ -46,6 +46,9 @@ async def get_news(query):
 @app.route('/get_contact_info', methods=['GET'])
 def get_contact_info():
     return "contact info"
+@app.route("/get_doc/<text><number><include>", methods = "GET")
+def get_text(text, number, include):
+    return bill_search(text, number, include)
 
 if __name__ == '__main__':
     app.run(debug=False)
