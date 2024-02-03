@@ -22,11 +22,6 @@ app = Flask(__name__)
 def ayo():
     return "theres nothing here bruh"
 
-@app.route('/search_bill/<string:query>', methods=['GET'])
-def search(query):
-    # using vector
-    return query 
-
 @app.route('/get_image/<query>', methods=['GET'])
 def get_image(query):
     return image_search(query)
@@ -46,9 +41,10 @@ async def get_news(query):
 @app.route('/get_contact_info', methods=['GET'])
 def get_contact_info():
     return "contact info"
-@app.route("/get_doc/<text><number><include>", methods = "GET")
-def get_text(text, number, include):
-    return bill_search(text, number, include)
+
+@app.route("/get_doc/<text><number>", methods = "GET")
+def get_doc(text, number):
+    return bill_search(text, number)
 
 if __name__ == '__main__':
     app.run(debug=False)

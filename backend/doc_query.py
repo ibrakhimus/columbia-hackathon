@@ -10,7 +10,7 @@ openai_ef = embedding_functions.OpenAIEmbeddingFunction(
 
 collection = client.get_collection(name="bill_db", embedding_function=openai_ef)
 
-def bill_search(text, n_results = 1, include = ["documents"]):
+def bill_search(text, n_results = 1, include = ["documents", "metadatas", "distances"]):
     response = collection.query(
         query_texts = [text],
         n_results = n_results,
@@ -18,5 +18,5 @@ def bill_search(text, n_results = 1, include = ["documents"]):
     )
     return response
 
-if __name__ == "__main__":
-    print(bill_search("DACA", 1, ["documents", "metadatas", "distances"]))
+# if __name__ == "__main__":
+#     print(bill_search("DACA", 1, ["documents", "metadatas", "distances"]))
