@@ -12,7 +12,7 @@ const backendUrl = "http://127.0.0.1:5000";
 
 const BillPage = ({ search, bill, setBill }) => {
   
-  
+
 
   console.log(bill)
   const [news, setNews] = useState([]);
@@ -29,7 +29,7 @@ useEffect(() => {
         try {
           setIsLoading(true); // Start loading
           console.log(`${backendUrl}/get_doc/${bill["title"]}/3`);
-          var res = await axios.get(`${backendUrl}/get_doc/${search}/3`);
+          var res = await axios.get(`${backendUrl}/get_doc/${bill["title"]}/3`);
           res = res["data"];
 
           var docs = res["documents"][0];

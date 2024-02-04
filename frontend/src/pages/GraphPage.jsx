@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Network } from 'vis-network/standalone/esm/vis-network';
 import 'vis-network/styles/vis-network.css';
 import networkData from '../data/graph_data.json';
-import { Slider } from 'antd';
+import { Slider } from "antd"
 import Nav from '../components/Nav';
 
 const formatter = (value) => `${value}%`;
@@ -37,7 +37,7 @@ function GraphPage() {
       nodes: {
         shape: 'dot',
         scaling: { min: 20, max: 100 },
-        font: { size: 20, face: 'Tahoma'},
+        font: { size: 20, face: 'Tahoma', color: 'rgba(0,0,0,0.7)'},
       },
       edges: {
         color: { inherit: true },
