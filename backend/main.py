@@ -73,5 +73,5 @@ async def support_email_data():
     #     return "No bill name provided"
     return await support_email("Homeownership for DREAMers Act")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
