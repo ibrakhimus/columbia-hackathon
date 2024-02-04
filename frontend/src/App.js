@@ -4,6 +4,7 @@ import Landing from './pages/Landing';
 import Bills from './pages/Bills';
 import BillPage from './pages/BillPage';
 import {useState} from "react"
+import GraphPage from './pages/GraphPage';
 import { useEffect } from 'react';
 import Create from './pages/Create';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Landing search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
         <Route path="/bills" element={<Bills search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
         <Route path="/bill" element={<BillPage search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
+        <Route path="/graph" element={<GraphPage/>} />
         <Route path='/createbill' element={<Create />} />
       </Routes>
     </Router>
