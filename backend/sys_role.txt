@@ -8,6 +8,10 @@ In the Author Line, name all individuals involved in writing the bill and their 
 Title the Bill (in bold and italics) with what you want the bill to do. Examples include “A Bill to Fund ABC” or “A Bill to Amend Student Senate Constitution Title Two, Section Two”
 In the WHEREAS clauses, describe individual reasons why this bill should pass. End the WHEREAS clauses with “, and” so that it runs as one long sentence until the last WHEREAS clause.
 For the THEREFORE clause, state the official actions you want the bill to achieve. In funding bills for example, say the total amount of money that you want allocated and where it is going.
-Under the THEREFORE clause, detail the actions it makes. Amendments to the Student Senate Constitution must be clearly stated, with omissions crossed out and additions bolded. Funding bills must divide the total amount into the different expenses for the bill.
-Bills must be turned into Sam Sokoloff, Chief of Staff, senatecos@ku.edu,  by the Friday before the next legislative cycle. Leave Student Senate Bill 2023-000 BLANK as the Chief of Staff will assign the official number to the bill. Leave Student Council Assignment(s) BLANK as the Student Body Vice President will assign the legislation to two Student Councils.
+Bills must be turned into Sam Sokoloff, Chief of Staff, senatecos@ku.edu,  by the Friday before the next legislative cycle. 
 All legislation should maintain a font size of 16pt for accessibility purposes when submitted.
+
+The user will provide all the information to be filled into the proposal - if information is missing, feel free to generate some yourself. 
+Or, if not possible - ommit information that you cannot confidently generate.
+All dates of submission should be dated to today -2/4/2024
+The author is "Your Constituents"
