@@ -80,9 +80,8 @@ async def support_email_data(short_name):
 @cross_origin()
 @app.route("/gen_bill_proposal", methods = ["GET"])
 def gen_bill_proposal():
-    # three params
-    if(request.args.get("bill_name") & request.args.get("bill_opinion")):
-        return create_proposal(request.args.get("bill_name"), request.args.get("bill_opinion"), request.args.get("additional_info"))
+    if((request.args.get("bill_name") != None) & (request.args.get("bill_opinion") != None)):
+        return create_proposal(str(request.args.get("bill_name")), str(request.args.get("bill_opinion")), str(request.args.get("additional_info")))
     return "invalid request - please provide bill info"
 
 if __name__ == '__main__':
