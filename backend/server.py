@@ -82,7 +82,7 @@ async def support_email_data(short_name):
 def gen_bill_proposal():
     if((request.args.get("bill_name") != None) & (request.args.get("bill_opinion") != None)):
         return create_proposal(str(request.args.get("bill_name")), str(request.args.get("bill_opinion")), str(request.args.get("additional_info")))
-    return "invalid request - please provide bill info"
+    return "invalid request - please provide bill_name, bill_opinion, additional_info (optional)"
 
 if __name__ == '__main__':
     app.run(debug=True)
