@@ -140,7 +140,7 @@ li {
 
 nav {
   backdrop-filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 1);
   max-width: 1200px;
   padding: 32px 24px;
   display: flex;
@@ -568,6 +568,7 @@ margin-bottom: 200px;
   font-size: 20px;
   margin-bottom: 16px;
   color: black;
+  margin-left: 20px;
 }
 
 .summary__container {
@@ -670,4 +671,9 @@ margin-bottom: 200px;
   margin-left: 30px;
   margin-right: 30px;
   text-align: center;
+}
+
+.back__btn {
+  margin-left: 40px;
+  font-size: 40px;
 }
