@@ -78,7 +78,7 @@ async def support_email_data(short_name):
 
 # param names: bill_info, bill_opinion, additional_info (optional)
 @cross_origin()
-@app.route("/gen_bill_proposal", methods = ["GET"])
+@app.route("/gen_bill_proposal", methods = ["POST"])
 def gen_bill_proposal():
     if((request.args.get("bill_info") != None) & (request.args.get("bill_opinion") != None)):
         return create_proposal(str(request.args.get("bill_info")), str(request.args.get("bill_opinion")), str(request.args.get("additional_info")))
