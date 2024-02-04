@@ -3,19 +3,67 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const backendUrl = "http://127.0.0.1:5000";
 
+<<<<<<< HEAD
 const BillPage = ({ search, bill, setBill }) => {
+=======
+const BillPage = ({ search, setSearch, bill, setBill }) => {
+>>>>>>> origin
 
-  console.log(bill)
+  const navigate = useNavigate()
+  const [billList, setBillList] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
   const [news, setNews] = useState([]);
   const [img, setImg]  = useState("")
   const [similarBills, setSimilarBills] = useState([]);
+  const [currentBillId, setCurrentBillId] = useState(null);
 
   useEffect(() => {
-    // Fetch the current bill...
-  
+    async function fetchData() {
+      const numImg = 3;
+      if (search !== "") {
+        try {
+          setIsLoading(true); // Start loading
+          console.log(`${backendUrl}/get_doc/${search}/${numImg}`);
+          var res = await axios.get(`${backendUrl}/get_doc/${search}/${numImg}`);
+          res = res["data"];
+
+          var docs = res["documents"][0];
+          var ids = res["ids"][0];
+          var meta = res["metadatas"][0][0];
+          setCurrentBillId(ids[0]) // not too sure if thats the proper path
+
+          var arr = [];
+          for (var i = 0; i < numImg; i++) { 
+            var img = await axios.get(`${backendUrl}/get_image/${ids[i]}`);
+            console.log(img);
+            arr.push({
+              "title": docs[i],
+              "short_title": ids[i],
+              "author": meta["sponsor_name"],
+              "party": meta["sponsor_party"],
+              "date": meta["latest_major_action_date"],
+              "img_url": img["data"],
+              "meta": meta
+            });
+          }
+          setBillList(arr);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // Handle any errors here
+        }
+        setIsLoading(false); // End loading
+      }
+    }
+    fetchData();
+  }, [search]);
+
+
+
+  useEffect(() => {  
     // Fetch the similar bills
     fetch(`${backendUrl}/search?term=${search}`)
       .then((response) => response.json())
@@ -23,7 +71,11 @@ const BillPage = ({ search, bill, setBill }) => {
         const filteredBills = data.filter((bill) => bill.id !== bill);
         setSimilarBills(filteredBills.slice(0, 3));
       });
+<<<<<<< HEAD
   }, [search, bill]);
+=======
+  }, [search, setBill]);
+>>>>>>> origin
 
   // const blobRef = useRef(null);
 
@@ -44,13 +96,13 @@ const BillPage = ({ search, bill, setBill }) => {
   // }, []);
 
   useEffect(() => {
-    const searchTerm = bill.searchTerm; // Replace with the actual property name in the bill object
+    const search = bill.search; // Replace with the actual property name in the bill object
     const currentBillId = bill.id; // Replace with the actual property name in the bill object
   
     // Fetch the current bill...
   
     // Fetch the similar bills
-    fetch(`${backendUrl}/search?term=${searchTerm}`)
+    fetch(`${backendUrl}/search?term=${search}`)
       .then((response) => response.json())
       .then((data) => {
         const filteredBills = data.filter((bill) => bill.id !== bill);
@@ -198,6 +250,7 @@ const BillPage = ({ search, bill, setBill }) => {
             <h1 className="similar__bills--title">Similar Bills</h1>
             <div className="similar__bills--wrapper">
               <div className="bill">
+              <button onClick = {() => sendMail()}className="email__button">Send Email</button>
                 <figure className="bill__img--wrapper" onClick={bill.onClick}>
                     <img className="bill__img" src={bill.img} alt={bill.name}/>
                 </figure>
