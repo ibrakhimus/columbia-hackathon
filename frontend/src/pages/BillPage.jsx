@@ -1,9 +1,76 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Nav from '../components/Nav';
+import { Chrono } from "react-chrono";
+import axios from 'axios';
+
+
 
 const BillPage = () => {
+   const [news, setNews] = useState([]);
+
+   useEffect(() => {
+    const fetchData = async () => {
+      let query = 'DACA Act';
+      let url = "http://127.0.0.1:5000/get_news/"
+      const result = await axios.get(url+query);
+
+      setNews(result.data);
+    };
+
+    fetchData();
+  }, []);
+
+    const items = [{
+        title: "May 1940",
+        cardTitle: "Dunkirk",
+        url: "http://www.history.com",
+        cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
+        cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
+        media: {
+          type: "IMAGE",
+          source: {
+            url: "https://preview.redd.it/could-someone-help-me-find-the-original-source-blank-image-v0-j40ek4jtksaa1.jpg?width=640&crop=smart&auto=webp&s=bc6ed7db0f15554843ab62de5ee71cce50435647"
+          }
+        }
+      },
+      {
+        title: "May 1940",
+        cardTitle: "Dunkirk",
+        url: "http://www.history.com",
+        cardSubtitle:"Men of the British Expeditionary Force (BEF) wade out to..",
+        cardDetailedText: "Men of the British Expeditionary Force (BEF) wade out to..",
+        media: {
+          type: "IMAGE",
+          source: {
+            url: "https://i.pinimg.com/736x/58/d2/66/58d266f90982b069f528b56ddb13b7f6.jpg"
+          }
+        }
+      },
+     ];
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //       const result = await axios.get('https://api.worldnewsapi.com/search-news', {
+    //         params: {
+    //           text: 'DACA Act',
+    //           language: 'en',
+    //           number: 10,
+    //           'api-key': '2999e54b97f542f6bdc2ee3c47a754a2',
+    //         }
+    //       });
+    
+    //       setNews(result.data);
+    //     };
+    
+    //     fetchData();
+    //   }, []);
+
+
     return (
+        <>
+        <Nav />
         <section id="bill">
             <button className="back">Back</button>
             <div className="billpage__container">
@@ -28,10 +95,20 @@ const BillPage = () => {
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
                 <div className="bill__news">
-
+                  {news.map((article, index) => (
+                  <div key={index}>
+                    <h2>{article.title}</h2>
+                    <p>{article.description}</p>
+                    <a href={article.url}>Read more</a>
+                  </div>
+                  ))}
                 </div>
+            <div className="bill__timeline">
+                
+            </div>
             </div>
         </section>
+        </>
     );
 }
 
