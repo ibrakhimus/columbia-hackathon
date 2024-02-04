@@ -3,19 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 
 const backendUrl = "http://127.0.0.1:5000";
 
 <<<<<<< HEAD
 const BillPage = ({ search, bill, setBill }) => {
 =======
-const BillPage = ({ search, setSearch, bill, setBill }) => {
+const BillPage = ({ bill, setBill }) => {
 >>>>>>> origin
 
-  const navigate = useNavigate()
-  const [billList, setBillList] = useState([])
-  const [isLoading, setIsLoading] = useState(false);
+  console.log(bill)
   const [news, setNews] = useState([]);
   const [img, setImg]  = useState("")
   const [similarBills, setSimilarBills] = useState([]);
@@ -68,14 +65,10 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
     fetch(`${backendUrl}/search?term=${search}`)
       .then((response) => response.json())
       .then((data) => {
-        const filteredBills = data.filter((bill) => bill.id !== bill);
+        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
         setSimilarBills(filteredBills.slice(0, 3));
       });
-<<<<<<< HEAD
-  }, [search, bill]);
-=======
   }, [search, setBill]);
->>>>>>> origin
 
   // const blobRef = useRef(null);
 
@@ -96,19 +89,25 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
   // }, []);
 
   useEffect(() => {
-    const search = bill.search; // Replace with the actual property name in the bill object
-    const currentBillId = bill.id; // Replace with the actual property name in the bill object
-  
-    // Fetch the current bill...
-  
-    // Fetch the similar bills
-    fetch(`${backendUrl}/search?term=${search}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredBills = data.filter((bill) => bill.id !== bill);
-        setSimilarBills(filteredBills.slice(0, 3));
-      });
-  }, [bill]); // Add bill to the dependency array
+    
+    const loadImg = async() =>{
+      var img_load = await axios.get(`${backendUrl}/get_face/${bill ? bill["author"] : "Bill Clinton"}`);
+      setImg(img_load["data"])
+    }
+    loadImg()
+
+    const fetchData = async () => {
+      const query = bill ? bill["short_title"] : 'DACA Act';
+      const amount = 3;
+      let url = "http://127.0.0.1:5000/get_news"
+      const result = await axios.get(url + "/" + query + "/" + amount);
+
+      setNews(result.data);
+      console.log(result.data)
+    };
+
+    // fetchData(); #need to change
+  }, []);
 
 
   if (bill == null) {
@@ -243,23 +242,6 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
               <p className='article__text'>{article.text.substring(0, 200)}...</p>
             </div>
           ))}
-        </div>
-
-
-        <div className="similar__bills--container">
-            <h1 className="similar__bills--title">Similar Bills</h1>
-            <div className="similar__bills--wrapper">
-              <div className="bill">
-              <button onClick = {() => sendMail()}className="email__button">Send Email</button>
-                <figure className="bill__img--wrapper" onClick={bill.onClick}>
-                    <img className="bill__img" src={bill.img} alt={bill.name}/>
-                </figure>
-                <div className="bill__description">
-                    <h3 className="bill__title">{bill.name.length > 45 ? bill.name.substring(0, 45) + '...' : bill.name}</h3>
-                    <p className="bill__para">{bill.date}</p>
-                </div>
-            </div>
-            </div>
         </div>
       </section>
     </div>
