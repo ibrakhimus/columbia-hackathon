@@ -7,7 +7,7 @@ import {useState} from "react"
 
 function App() {
   const [search, setSearch] = useState("")
-  const [bill, setBill] = useState("")
+  const [bill, setBill] = useState(null)
   
   return (
     <>
