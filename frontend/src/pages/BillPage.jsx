@@ -100,6 +100,30 @@ const BillPage = ({ bill, setBill }) => {
     return email;
   }
 
+  const sendEmail = (emailAddress, emailSubject, emailBody) => {
+    // Encode subject and body to handle special characters
+    const subject = encodeURIComponent(emailSubject);
+    const body = encodeURIComponent(emailBody);
+
+    // Construct the mailto link
+    const mailtoLink = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+    console.log(mailtoLink)
+    // Use window.location.href for compatibility with all browsers
+    window.location.href = mailtoLink;
+  };
+
+  async function sendMail() {
+    if (bill) {
+      console.log(`${backendUrl}/support_email/${bill["short_title"]}`)
+      var response = await axios.get(`${backendUrl}/support_email/${bill["short_title"]}`)
+      var res = response["data"]["obj"]
+      console.log(res)
+      sendEmail(res[0], res[2] ,res[1])
+      
+    }
+    
+  }
+
 
   return (
     <>
@@ -118,7 +142,7 @@ const BillPage = ({ bill, setBill }) => {
               <FontAwesomeIcon icon={faEnvelope} />
               <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
             </div>
-            <button className="email__button">Send Email</button>
+            <button onClick = {() => sendMail()}className="email__button">Send Email</button>
           </div>
 
           <div className="bill__middle--container">

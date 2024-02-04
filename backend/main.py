@@ -32,7 +32,7 @@ def get_image(query):
 
 @cross_origin()
 @app.route('/get_face/<query>', methods=['GET'])
-def get_image(query):
+def get_face(query):
     return face_search(query)
 
 
@@ -70,14 +70,15 @@ async def get_timeline(bill_slug):
     timeline = res.json()["results"][0]["actions"]
     return timeline
 
-@app.route("/support_email", methods = ["GET"])
-async def support_email_data():
+@cross_origin()
+@app.route("/support_email/<short_name>", methods = ["GET"])
+async def support_email_data(short_name):
     # if(request.args.get("short_name") != None):
     #     short_name = request.args.get("short_name")
     #     return await support_email(str(short_name))
     # else:
     #     return "No bill name provided"
-    return await support_email("Homeownership for DREAMers Act")
+    return support_email(short_name)
 
 if __name__ == '__main__':
     app.run(debug=True)
