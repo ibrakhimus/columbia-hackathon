@@ -91,28 +91,28 @@ const BillPage = () => {
             <button className="email__button">Send Email</button>
           </div>
 
-          <div className="bill__middle--container">
-            <h1 className="bill__middle--title">DACA Act</h1>
-            <div className="bill__middle--date">12/12/2020</div>
-            <div className="bill__middle--sponsors">Sponsors: Mahdi Tanzim</div>
-            <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
-          </div>
-          <div className="bill__news">
-            {/* {news.map((article, index) => (
+                <div className="bill__middle--container">
+                    <h1 className="bill__middle--title">DACA Act</h1>
+                    <div className="bill__middle--date">12/12/2020</div>
+                    <div className="bill__middle--sponsors">Sponsors: Mahdi Tanzim</div>
+                    <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
+                </div>
+                <div className="bill__news">
+                  {/* {news.map((article, index) => (
                   <div key={index}>
                     <h2>{article.title}</h2>
                     <img src={article.image} alt={article.title}/>
                     <p>{article.text.substring(0, 200)}...</p>
                   </div>
-                  ))} */}
-          </div>
-          <div className="bill__timeline">
-
-          </div>
-        </div>
-      </section>
-    </>
-  );
+                  ))}
+                </div>
+            <div className="bill__timeline">
+                
+            </div>
+            </div>
+        </section>
+        </>
+    );
 }
 
 export default BillPage;

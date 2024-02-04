@@ -40,6 +40,7 @@ async def get_news(query, amount):
         "sort": "publish-time",
         "sort-direction": "DESC"
         })
+    # print(response.json())
     return response.json()["news"]
 
 @app.route('/get_contact_info', methods=['GET'])
