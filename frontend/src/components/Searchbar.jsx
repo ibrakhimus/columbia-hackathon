@@ -18,7 +18,7 @@ const Searchbar = ({search, setSearch, nav_funct }) => {
             <input 
               className="search__input" 
               type="text" 
-              placeholder="DACA Act" 
+              placeholder=" search a policy..." 
               defaultValue={localSearch} 
               onChange={(e) => setLocalSearch(e.target.value)}
             />
