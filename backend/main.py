@@ -1,7 +1,7 @@
 import requests
 import json
 from flask import Flask, request
-from image_search import image_search
+from image_search import image_search, face_search
 from doc_query import bill_search
 from auto_email import support_email
 from flask_cors import CORS, cross_origin
@@ -29,6 +29,12 @@ def ayo():
 @app.route('/get_image/<query>', methods=['GET'])
 def get_image(query):
     return image_search(query)
+
+@cross_origin()
+@app.route('/get_face/<query>', methods=['GET'])
+def get_face(query):
+    return face_search(query)
+
 
 # returns an array of objects
 @cross_origin()
@@ -64,14 +70,15 @@ async def get_timeline(bill_slug):
     timeline = res.json()["results"][0]["actions"]
     return timeline
 
-@app.route("/support_email", methods = ["GET"])
-async def support_email_data():
+@cross_origin()
+@app.route("/support_email/<short_name>", methods = ["GET"])
+async def support_email_data(short_name):
     # if(request.args.get("short_name") != None):
     #     short_name = request.args.get("short_name")
     #     return await support_email(str(short_name))
     # else:
     #     return "No bill name provided"
-    return await support_email("Homeownership for DREAMers Act")
+    return support_email(short_name)
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
