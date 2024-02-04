@@ -43,7 +43,7 @@ async def get_news(query, amount):
         "sort": "publish-time",
         "sort-direction": "DESC"
         })
-    # print(response.json())
+    print(response.json())
     return response.json()["news"]
 
 @cross_origin()
