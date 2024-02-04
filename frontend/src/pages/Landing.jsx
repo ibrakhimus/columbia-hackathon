@@ -1,10 +1,13 @@
 import React from "react";
 import Nav from "../components/Nav";
 import Searchbar from "../components/Searchbar";
+import { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 const Landing = ({ search, setSearch, bill, setBill }) => {
   const navigate = useNavigate()
+
+
   return (
     <section id="hero">
       <video
@@ -29,7 +32,7 @@ const Landing = ({ search, setSearch, bill, setBill }) => {
               <div>Amplify,</div>
             </div>
             <div className="home__hero-4">
-              <div>Insight.</div>
+              <div className="overflow__none">Insight.</div>
             </div>
           </div>
           <h1 className="hero__h1">

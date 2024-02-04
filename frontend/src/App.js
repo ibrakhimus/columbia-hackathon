@@ -10,24 +10,9 @@ function App() {
   const [search, setSearch] = useState("")
   const [bill, setBill] = useState(null)
 
-  useEffect(() => {
-    const blob = document.getElementById("blob");
-
-    window.onpointermove = event => { 
-      const { clientX, clientY } = event;
-
-      blob.animate({
-        left: `${clientX}px`,
-        top: `${clientY}px`
-      }, { duration: 3000, fill: "forwards" });
-    }
-  }, []);
-  
   return (
     <>
     <div class="gradient-bg"></div>
-    <div id="blob"></div>
-    <div id="blur"></div>
     <Router>
       <Routes>
         <Route path="/" element={<Landing search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />

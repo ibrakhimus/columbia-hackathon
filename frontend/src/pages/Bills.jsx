@@ -4,6 +4,8 @@ import Searchbar from "../components/Searchbar";
 import Nav from "../components/Nav";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useRef } from 'react';
+import arrowRight from "../assets/right-arrow.png";
 
 const backendUrl = "http://127.0.0.1:5000";
 
@@ -11,6 +13,40 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
   const navigate = useNavigate()
   const [billList, setBillList] = useState([])
   const [isLoading, setIsLoading] = useState(false);
+
+  const trailer = useRef(null);
+
+  useEffect(() => {
+    const animateTrailer = (e, interacting) => {
+      const x = e.clientX - trailer.current.offsetWidth / 2,
+            y = e.clientY - trailer.current.offsetHeight / 2;
+      
+      const keyframes = {
+        transform: `translate(${x}px, ${y}px) scale(${interacting ? 2 : 1})`
+      }
+      
+      trailer.current.animate(keyframes, { 
+        duration: 800, 
+        fill: "forwards" 
+      });
+    }
+
+
+    const handleMouseMove = e => {
+      const interactable = e.target.closest(".bill__img--wrapper"),
+            interacting = interactable !== null;
+      
+      animateTrailer(e, interacting);
+ 
+    }
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -53,6 +89,9 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
   console.log(billList)
   return (
     <section id="bills">
+      <div id="trailer" ref={trailer}>
+        <img id="trailer-icon" src={arrowRight} alt="" />
+      </div>
       <div className="row">
         <Nav />
         <div className="hero__search--outer">
