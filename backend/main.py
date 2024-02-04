@@ -80,5 +80,5 @@ async def support_email_data(short_name):
     #     return "No bill name provided"
     return support_email(short_name)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
