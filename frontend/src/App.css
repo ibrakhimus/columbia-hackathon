@@ -8,6 +8,39 @@
   color: white;
 }
 
+/* body:hover > #trailer {
+  opacity: 1;
+} */
+
+#trailer {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border-radius: 20px;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10000;
+  
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 500ms ease;
+  
+  display: grid;
+  place-items: center;
+}
+
+#trailer:not([data-type=""]) > #trailer-icon {
+  opacity: 1;
+}
+
+#trailer-icon {
+  line-height: 4px;
+  width: 6px;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
 
 @keyframes rotate {
   from {
@@ -15,7 +48,7 @@
   }
   
   50% {
-    scale: 1 1.5;
+    scale: 1 1.1;
   }
   
   to {
@@ -30,7 +63,7 @@
 
 #blob {
   background-color: white;
-  height: 34vmax;
+  height: 20vmax;
   aspect-ratio: 1;
   position: absolute;
   left: 50%;
@@ -48,7 +81,7 @@
   width: 100%;
   position: absolute;
   z-index: -1;
-  backdrop-filter: blur(12vmax);
+  backdrop-filter: blur(10vmax);
 }
 
 .gradient-bg {

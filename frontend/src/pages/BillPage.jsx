@@ -13,6 +13,22 @@ const BillPage = ({ bill, setBill }) => {
   const [img, setImg]  = useState("")
 
   useEffect(() => {
+    const blob = document.getElementById("blob");
+  
+    window.onpointermove = event => { 
+      const { clientX, clientY } = event;
+  
+      const adjustedX = Math.min(clientX - blob.offsetWidth / 2, window.innerWidth - blob.offsetWidth);
+      const adjustedY = Math.min(clientY - blob.offsetHeight / 2, window.innerHeight - blob.offsetHeight);
+  
+      blob.animate({
+        left: `${adjustedX}px`,
+        top: `${adjustedY}px`
+      }, { duration: 3000, fill: "forwards" });
+    }
+  }, []);
+
+  useEffect(() => {
     
     const loadImg = async() =>{
       var img_load = await axios.get(`${backendUrl}/get_face/${bill ? bill["author"] : "Bill Clinton"}`);
@@ -127,6 +143,10 @@ const BillPage = ({ bill, setBill }) => {
 
   return (
     <>
+    <div class='blob__container'>
+        <div id="blob"></div>
+        <div id="blur"></div>
+      </div>
       <Nav />
       <section id="bill">
         <button className="back">Back</button>
