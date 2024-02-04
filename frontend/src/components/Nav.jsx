@@ -18,7 +18,9 @@ const Nav = () => {
           <li>Features</li>
           <li>Features</li>
         </ul>
-        <button className="nav__button">Propose A Bill</button>
+        <Link to="/createbill" className="nav__button">
+          Create Bill
+        </Link>
       </nav>
     </div>
   );
