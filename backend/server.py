@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import Flask
+from flask import Flask, request
 from image_search import image_search
 from doc_query import bill_search
 from auto_email import support_email
@@ -58,9 +58,13 @@ async def get_timeline(bill_slug):
     timeline = res.json()["results"][0]["actions"]
     return timeline
 
-@app.route("/support_email/<short_name>")
-def support_email_data(short_name):
-    return support_email(short_name)
+@app.route("/support_email/", methods = ["GET"])
+def support_email_data():
+    if(request.args.get('short_name') is None):
+        return "No short_name provided"
+    else:
+        short_name = request.args.get('short_name')
+        return support_email(short_name)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True) 
