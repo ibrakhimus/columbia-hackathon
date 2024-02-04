@@ -42,7 +42,7 @@ def get_face(query):
 @app.route('/get_news/<query>/<amount>', methods=['GET'])
 async def get_news(query, amount):    
     response = requests.get("https://api.worldnewsapi.com/search-news", params={
-        "api-key": "f6aca0f7577248b5bdfe2484911735ef",
+        "api-key": "0796027eca4c467c9ee505c465a06892",
         "text": query, 
         "number": amount,
         "source-countries": "us",

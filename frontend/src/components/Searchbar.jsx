@@ -13,6 +13,8 @@ const Searchbar = ({search, setSearch, nav_funct }) => {
     return (
         <div className="search__container">
           <div style={{ position: 'relative' }}>
+            <div className="search__wrapper">
+
             <input 
               className="search__input" 
               type="text" 
@@ -32,6 +34,7 @@ const Searchbar = ({search, setSearch, nav_funct }) => {
                 }
               }}
             />
+            </div>
           </div>
         </div>
       );
