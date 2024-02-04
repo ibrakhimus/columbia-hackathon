@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-    <div class="gradient-bg"></div>
+    <div className="gradient-bg"></div>
     <Router>
       <Routes>
         <Route path="/" element={<Landing search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
