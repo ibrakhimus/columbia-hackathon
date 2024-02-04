@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
 import axios from 'axios';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const backendUrl = "http://127.0.0.1:5000";
 
@@ -162,7 +164,7 @@ const BillPage = ({ search, bill, setBill }) => {
     <div id='zind'>
       <Nav />
       <section id="bill">
-        <button className="back">Back</button>
+        <Link to={`/bills`} className='back__btn'> <FontAwesomeIcon icon={faArrowLeft} /></Link>
         <h1 className="bill__middle--title">{bill ? bill["short_title"] : "DACA Act"}</h1>
         <div className="bill__middle--date">{bill ? bill["date"] : "12/12/2020"}</div>
         <div className="billpage__container">
