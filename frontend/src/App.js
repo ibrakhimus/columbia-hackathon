@@ -7,6 +7,7 @@ import {useState} from "react"
 import GraphPage from './pages/GraphPage';
 import { useEffect } from 'react';
 import Create from './pages/Create';
+import GeneratedBill from './pages/Generatedbill';
 
 function App() {
   const [search, setSearch] = useState("")
@@ -25,6 +26,7 @@ function App() {
         <Route path="/bill" element={<BillPage search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
         <Route path="/graph" element={<GraphPage setBill = {setBill}/>} />
         <Route path='/createbill' element={<Create />} />
+        <Route path='/generatedbill' element={<GeneratedBill />} />
       </Routes>
     </Router>
     </>

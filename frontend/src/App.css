@@ -224,7 +224,7 @@
   bottom: 0;
   left: 0;
   background: linear-gradient(90deg, #0a042a 0%, #000212 100%);
-  z-index: -1;
+  z-index: -999;
 }
 
 .divider {
@@ -325,7 +325,7 @@ nav {
 }
 
 video {
-  z-index: -999;
+  z-index: -998;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -334,7 +334,7 @@ video {
 }
 
 .hero__video--lighting {
-  z-index: -998;
+  z-index: -997;
   background-color: rgba(0, 0, 0, 0.5);
   background-image: radial-gradient(
     circle,
@@ -395,7 +395,8 @@ video {
 }
 
 .fa-magnifying-glass {
-  background-color: #000000;
+  background-color: black;
+  filter: invert(100%);
   color: #000;
   transition: all 300ms ease;
 }
@@ -498,7 +499,7 @@ video {
 /* BILLS */
 
 
-
+#bills 
 
 .bills__container {
   flex-wrap: wrap;
@@ -922,4 +923,119 @@ textarea {
 
 .cards__container {
   margin-top: 80px;
+}
+
+.create__container {
+  display: flex;
+  height: calc(100vh - 160px);
+  padding: 18px;
+}
+
+.create__container--left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.create__container--left,
+.create__container--right {
+  width: 50%;
+}
+
+.create__container__img-outer {
+  width: 275px;
+}
+
+.create__container__img {
+  width: 100%;
+}
+
+.create__container--h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.create__container--right-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create__container--label {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.create__container--input {
+  height: 36px;
+  max-width: 400px;
+  width: 100%;
+  margin: 48px auto 0;
+  color: #000;
+}
+
+.label-div {
+  margin-bottom: 12px;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.textarea__1 {
+  height: 25px;
+}
+.textarea__2 {
+  height: 125px;
+}
+.textarea__3 {
+  height: 80px;
+}
+
+.textarea__1,
+.textarea__2,
+.textarea__3 {
+  padding: 12px;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px 0 rgb(0 0 0 / 30%);
+}
+
+.response__data {
+  max-width: 500px;
+  border: 4px solid white;
+  margin: 0 auto;
+}
+
+.generated__h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.generated__drop--buttons {
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-gmail {
+  margin-top: 24px;
+  background-color: #829dc7;
+  transition: all 300ms ease;
+  cursor: pointer;
+  width: 175px;
+  height: 50px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
