@@ -27,7 +27,7 @@ const BillPage = ({ search, bill, setBill }) => {
         const filteredBills = data.filter((bill) => bill.id !== currentBillId);
         setSimilarBills(filteredBills.slice(0, 3));
       });
-  }, [search, setBill]);
+  }, [search, bill]);
 
   // const blobRef = useRef(null);
 
