@@ -52,7 +52,7 @@ def support_email(short_name):
     #     model="gpt-3.5-turbo",
     #     messages=[{"role": "system", "content": email_str.format(name, chamber, bill_num, title)}])
     subject = f"Support for {bill_num} - {short_name}"
-    return(email, generate_generic_email(name, chamber, bill_num, title), subject)
+    return({"obj": [email, generate_generic_email(name, chamber, bill_num, title), subject]})
 
 if __name__ == "__main__":
     print(support_email("Homeownership for DREAMers Act"))
