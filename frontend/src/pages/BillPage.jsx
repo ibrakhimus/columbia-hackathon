@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const BillPage = () => {
+    const [author, setAuthor] = useState({});
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5000/get_doc/daca/4')
+            .then(response => {
+                console.log(response.data)
+                setAuthor(response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, []);
+
     return (
         <section id="bill">
             <button className="back">Back</button>
