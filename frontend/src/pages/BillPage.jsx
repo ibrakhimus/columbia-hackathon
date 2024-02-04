@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
@@ -11,43 +11,52 @@ const BillPage = ({ bill, setBill }) => {
   console.log(bill)
   const [news, setNews] = useState([]);
   const [img, setImg]  = useState("")
+  const [similarBills, setSimilarBills] = useState([]);
 
   useEffect(() => {
-    const blob = document.getElementById("blob");
+    // Fetch the current bill...
   
-    window.onpointermove = event => { 
-      const { clientX, clientY } = event;
-  
-      const adjustedX = Math.min(clientX - blob.offsetWidth / 2, window.innerWidth - blob.offsetWidth);
-      const adjustedY = Math.min(clientY - blob.offsetHeight / 2, window.innerHeight - blob.offsetHeight);
-  
-      blob.animate({
-        left: `${adjustedX}px`,
-        top: `${adjustedY}px`
-      }, { duration: 3000, fill: "forwards" });
-    }
-  }, []);
+    // Fetch the similar bills
+    fetch(`${backendUrl}/search?term=${searchTerm}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
+        setSimilarBills(filteredBills.slice(0, 3));
+      });
+  }, [searchTerm, currentBillId]);
+
+  // const blobRef = useRef(null);
+
+  // useEffect(() => {
+  //   const handlePointerMove = event => {
+  //     const { clientX, clientY } = event;
+      
+  //     blobRef.current.style.left = `${clientX}px`;
+  //     blobRef.current.style.top = `${clientY}px`;
+  //   };
+
+  //   window.addEventListener('pointermove', handlePointerMove);
+
+  //   // Clean up function to remove the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener('pointermove', handlePointerMove);
+  //   };
+  // }, []);
 
   useEffect(() => {
-    
-    const loadImg = async() =>{
-      var img_load = await axios.get(`${backendUrl}/get_face/${bill ? bill["author"] : "Bill Clinton"}`);
-      setImg(img_load["data"])
-    }
-    loadImg()
-
-    const fetchData = async () => {
-      const query = bill ? bill["short_title"] : 'DACA Act';
-      const amount = 3;
-      let url = "http://127.0.0.1:5000/get_news"
-      const result = await axios.get(url + "/" + query + "/" + amount);
-
-      setNews(result.data);
-      console.log(result.data)
-    };
-
-    // fetchData(); #need to change
-  }, []);
+    const searchTerm = bill.searchTerm; // Replace with the actual property name in the bill object
+    const currentBillId = bill.id; // Replace with the actual property name in the bill object
+  
+    // Fetch the current bill...
+  
+    // Fetch the similar bills
+    fetch(`${backendUrl}/search?term=${searchTerm}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
+        setSimilarBills(filteredBills.slice(0, 3));
+      });
+  }, [bill]); // Add bill to the dependency array
 
 
   if (bill == null) {
@@ -142,16 +151,14 @@ const BillPage = ({ bill, setBill }) => {
 
 
   return (
-    <>
-    <div class='blob__container'>
-        <div id="blob"></div>
-        <div id="blur"></div>
-      </div>
+    <div id='zind'>
       <Nav />
       <section id="bill">
         <button className="back">Back</button>
+        <h1 className="bill__middle--title">{bill ? bill["short_title"] : "DACA Act"}</h1>
+        <div className="bill__middle--date">{bill ? bill["date"] : "12/12/2020"}</div>
         <div className="billpage__container">
-          <div className="bill__author--container">
+        <div className="bill__author--container">
             <figure className="author__img--wrapper">
               <img className="author__img" src={img} alt="author" />
             </figure>
@@ -159,20 +166,19 @@ const BillPage = ({ bill, setBill }) => {
             <div className="author__wing">{bill ? (bill["meta"]["sponsor_party"] == "D"? "Democrat": "Republican"): "Republican"}</div>
             <div className="line"></div>
             <div className="email__container">
-              <FontAwesomeIcon icon={faEnvelope} />
               <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
             </div>
             <button onClick = {() => sendMail()}className="email__button">Send Email</button>
           </div>
-
           <div className="bill__middle--container">
-            <h1 className="bill__middle--title">{bill ? bill["short_title"] : "DACA Act"}</h1>
-            <div className="bill__middle--date">{bill ? bill["date"] : "12/12/2020"}</div>
-            <div className="bill__middle--sponsors">Latest Action: {bill ? (bill["meta"]["latest_major_action"] == "" ? bill["meta"]["latest_major_action"] : "Not yet before committee") : ""}</div>
+          <div className="summary__container">
+            <h1 className='summary_h1'>Summary</h1>
             <div className="bill__middle--summary">{bill? bill["title"] :"Summary" }</div>
           </div>
-          <div className="timeline__container">
-            lol
+            <div className="latest__action--container">
+              <div className="latest__action--title">Latest Action</div>
+            <div className="bill__middle--sponsors">{bill ? (bill["meta"]["latest_major_action"] == "" ? bill["meta"]["latest_major_action"] : "Not yet before committee") : ""}</div>
+            </div>
           </div>
         </div>
         <div className="bill__news">
@@ -186,8 +192,24 @@ const BillPage = ({ bill, setBill }) => {
             </div>
           ))}
         </div>
+
+
+        <div className="similar__bills--container">
+            <h1 className="similar__bills--title">Similar Bills</h1>
+            <div className="similar__bills--wrapper">
+              <div className="bill">
+                <figure className="bill__img--wrapper" onClick={bill.onClick}>
+                    <img className="bill__img" src={bill.img} alt={bill.name}/>
+                </figure>
+                <div className="bill__description">
+                    <h3 className="bill__title">{bill.name.length > 45 ? bill.name.substring(0, 45) + '...' : bill.name}</h3>
+                    <p className="bill__para">{bill.date}</p>
+                </div>
+            </div>
+            </div>
+        </div>
       </section>
-    </>
+    </div>
   );
 }
 

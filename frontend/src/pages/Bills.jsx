@@ -40,6 +40,22 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
  
     }
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    // Clean up function to disconnect the observer when the component unmounts
+    return () => observer.disconnect();
+
     window.addEventListener('mousemove', handleMouseMove);
 
     // Clean up the event listener when the component is unmounted
@@ -47,6 +63,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
       window.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
+
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -86,6 +104,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
     fetchData();
   }, [search]);
 
+
+
   console.log(billList)
   return (
     <section id="bills">
@@ -93,8 +113,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
         <img id="trailer-icon" src={arrowRight} alt="" />
       </div>
       <div className="row">
-        <Nav />
-        <div className="hero__search--outer">
+        <Nav classNam ="hidden"/>
+        <div className="hero__search--outer hidden">
           <Searchbar search = {search} setSearch={setSearch} />
         </div>
         {isLoading ? "Loading..." :
