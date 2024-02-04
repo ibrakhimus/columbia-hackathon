@@ -96,13 +96,13 @@ const BillPage = () => {
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
                 <div className="bill__news">
-                  {/* {news.map((article, index) => (
+                  {news.map((article, index) => (
                   <div key={index}>
                     <h2>{article.title}</h2>
                     <img src={article.image} alt={article.title}/>
                     <p>{article.text.substring(0, 200)}...</p>
                   </div>
-                  ))} */}
+                  ))}
                 </div>
             <div className="bill__timeline">
                 
