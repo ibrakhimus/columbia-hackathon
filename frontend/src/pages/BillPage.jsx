@@ -11,14 +11,9 @@ import Bill from '../components/Bill';
 const backendUrl = "http://127.0.0.1:5000";
 
 const BillPage = ({ search, bill, setBill }) => {
-  
 
-
-  console.log(bill)
   const [news, setNews] = useState([]);
   const [img, setImg]  = useState("")
-  const [similarBills, setSimilarBills] = useState([]);
-  const [currentBillId, setCurrentBillId] = useState(null);
   const [billList, setBillList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   var navigate = useNavigate()
@@ -34,8 +29,8 @@ useEffect(() => {
 
           var docs = res["documents"][0];
           var ids = res["ids"][0];
-          var meta = res["metadatas"][0][0];
-
+          var meta = res["metadatas"][0];
+          console.log(res)
           var arr = [];
           for (var i = 0; i < 3; i++) {
             var img = await axios.get(`${backendUrl}/get_image/${ids[i]}`);
@@ -43,11 +38,11 @@ useEffect(() => {
             arr.push({
               "title": docs[i],
               "short_title": ids[i],
-              "author": meta["sponsor_name"],
-              "party": meta["sponsor_party"],
-              "date": meta["latest_major_action_date"],
+              "author": meta[i]["sponsor_name"],
+              "party": meta[i]["sponsor_party"],
+              "date": meta[i]["latest_major_action_date"],
               "img_url": img["data"],
-              "meta": meta
+              "meta": meta[i]
             });
           }
           setBillList(arr);
@@ -59,7 +54,7 @@ useEffect(() => {
       }
     }
     fetchData();
-  }, []);
+  }, [bill]);
 
   // const blobRef = useRef(null);
 
@@ -97,7 +92,7 @@ useEffect(() => {
       console.log(result.data)
     };
 
-    // fetchData(); #need to change
+    fetchData();
   }, []);
 
 
@@ -202,41 +197,53 @@ useEffect(() => {
         <h1 className="bill__middle--title">{bill ? bill["short_title"] : "DACA Act"}</h1>
         <div className="bill__middle--date">{bill ? bill["date"] : "12/12/2020"}</div>
         <div className="billpage__container">
-        <div className="bill__author--container">
-            <figure className="author__img--wrapper">
-              <img className="author__img" src={img} alt="author" />
-            </figure>
-            <div className="author__name">{bill ? bill["author"] : "Bill Clinton"}</div>
-            <div className="author__wing">{bill ? (bill["meta"]["sponsor_party"] == "D"? "Democrat": "Republican"): "Republican"}</div>
-            <div className="line"></div>
-            <div className="email__container">
-              <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
+          <div className="bill__author--container">
+              <figure className="author__img--wrapper">
+                <img className="author__img" src={img} alt="author" />
+              </figure>
+              <div className="author__name">{bill ? bill["author"] : "Bill Clinton"}</div>
+              <div className="author__wing">{bill ? (bill["meta"]["sponsor_party"] == "D"? "Democrat": "Republican"): "Republican"}</div>
+              <div className="line"></div>
+              <div className="email__container">
+                <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
+              </div>
+              <button onClick = {() => sendMail()}className="email__button">Send Email</button>
             </div>
-            <button onClick = {() => sendMail()}className="email__button">Send Email</button>
-          </div>
-          <div className="bill__middle--container">
-          <div className="summary__container">
-            <h1 className='summary_h1'>Summary</h1>
-            <div className="bill__middle--summary">{bill? bill["title"] :"Summary" }</div>
-          </div>
-            <div className="latest__action--container">
-              <div className="latest__action--title">Latest Action</div>
-            <div className="bill__middle--sponsors">{bill ? (bill["meta"]["latest_major_action"] == "" ? bill["meta"]["latest_major_action"] : "Not yet before committee") : ""}</div>
+            <div className="bill__middle--container">
+            <div className="behavior__score--contaner">
+                Republican Backed
+              </div>
+
+            <div className="summary__container">
+              <h1 className='summary_h1'>Summary</h1>
+              <div className="bill__middle--summary">{bill? bill["title"] :"Summary" }</div>
+            </div>
+              <div className="latest__action--container">
+                <div className="latest__action--title">Latest Action</div>
+              <div className="bill__middle--sponsors">{bill ? (bill["meta"]["latest_major_action"] == "" ? bill["meta"]["latest_major_action"] : "Not yet before committee") : ""}</div>
             </div>
           </div>
         </div>
-        <div className="bill__news">
+        <div className="cards__container">
+          <h2 className='cards__h2'>Related News</h2>
+        <div className='cards'>
           {news.map((article, index) => (
-            <div className='article' key={index}>
-              <figure className="article__img--wrapper">
-                <img className='article__img' src={article.image} alt={article.title} />
-              </figure>
-              <h2 className='article__title'>{article.title}</h2>
-              <p className='article__text'>{article.text.substring(0, 200)}...</p>
+            <div key={index} className="card">
+              <a href={article.url} target='blank'>
+              <div className="card-content">
+                <h3 className="card-title">{article.title}</h3>
+                <h4 className="card-subtitle">{article.text.substring(0, 200)}...</h4>
+              
+              </div>
+              </a>
             </div>
           ))}
+          </div>
         </div>
+        
       </section>
+         
+        
       
       <section id="bills">
           
@@ -257,8 +264,9 @@ useEffect(() => {
         </div>}
       </div>
     </section>
-    </div>
-  );
-}
+  </div>
+)
+};
+
 
 export default BillPage;

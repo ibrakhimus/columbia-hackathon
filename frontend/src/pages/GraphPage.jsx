@@ -4,10 +4,14 @@ import 'vis-network/styles/vis-network.css';
 import networkData from '../data/graph_data.json';
 import { Slider } from "antd"
 import Nav from '../components/Nav';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
+const backendUrl = "http://127.0.0.1:5000";
 const formatter = (value) => `${value}%`;
 
-function GraphPage() {
+function GraphPage({setBill}) {
+  var navigate = useNavigate()
   const [slider, setSlider] = useState(10);
   const [filteredEdges, setFilteredEdges] = useState([]);
   const networkContainerRef = useRef(null);
@@ -61,6 +65,43 @@ function GraphPage() {
         networkInstanceRef.current.setData({ nodes: networkData.nodes, edges: filteredEdges });
       }
     }
+
+    async function traverse(text){
+      var res = await axios.get(`${backendUrl}/get_doc/${text}/1`)
+      res = res["data"]
+      console.log(res)
+
+      var meta = res["metadatas"][0][0];
+
+      
+      var total_obj = {
+        "title": meta["title"],
+        "short_title": meta["short_title"],
+        "author": meta["sponsor_name"],
+        "party": meta["sponsor_party"],
+        "date": meta["latest_major_action_date"],
+        "img_url": "",
+        "meta": meta
+      }
+
+      setBill(total_obj)
+      navigate("/bill")
+      
+
+    }
+
+
+    networkInstanceRef.current.on("click", function(params) {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0]; // Get the first node's ID
+        const node = networkData.nodes.find(node => node.id === nodeId); // Find the node object by its ID
+        if (node) {
+          console.log("Clicked node label:", node.title); // Log the label of the node
+          traverse()
+        }
+      }
+    });
+  
 
 
   }, [filteredEdges]); // Update this effect to depend on `filteredEdges`

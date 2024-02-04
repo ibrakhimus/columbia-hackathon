@@ -24,6 +24,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
       const keyframes = {
         transform: `translate(${x}px, ${y}px) scale(${interacting ? 2 : 1})`
       }
+      document.addEventListener('mousemove', handleMouseMove);
+
       
       trailer.current.animate(keyframes, { 
         duration: 800, 
@@ -56,12 +58,10 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
     // Clean up function to disconnect the observer when the component unmounts
     return () => observer.disconnect();
 
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Clean up the event listener when the component is unmounted
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    }
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+
   }, []);
 
   
@@ -77,7 +77,7 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
 
           var docs = res["documents"][0];
           var ids = res["ids"][0];
-          var meta = res["metadatas"][0][0];
+          var meta = res["metadatas"][0];
 
           var arr = [];
           for (var i = 0; i < 9; i++) {
@@ -86,11 +86,11 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
             arr.push({
               "title": docs[i],
               "short_title": ids[i],
-              "author": meta["sponsor_name"],
-              "party": meta["sponsor_party"],
-              "date": meta["latest_major_action_date"],
+              "author": meta[i]["sponsor_name"],
+              "party": meta[i]["sponsor_party"],
+              "date": meta[i]["latest_major_action_date"],
               "img_url": img["data"],
-              "meta": meta
+              "meta": meta[i]
             });
           }
           setBillList(arr);
@@ -109,9 +109,9 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
   console.log(billList)
   return (
     <section id="bills">
-      <div id="trailer" ref={trailer}>
+      {/* <div id="trailer" ref={trailer}>
         <img id="trailer-icon" src={arrowRight} alt="" />
-      </div>
+      </div> */}
       <div className="row">
         <Nav classNam ="hidden"/>
         <div className="hero__search--outer hidden">

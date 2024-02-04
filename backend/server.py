@@ -42,7 +42,7 @@ def get_face(query):
 @app.route('/get_news/<query>/<amount>', methods=['GET'])
 async def get_news(query, amount):    
     response = requests.get("https://api.worldnewsapi.com/search-news", params={
-        "api-key": "f6aca0f7577248b5bdfe2484911735ef",
+        "api-key": "0796027eca4c467c9ee505c465a06892",
         "text": query, 
         "number": amount,
         "source-countries": "us",
@@ -62,6 +62,11 @@ def get_contact_info():
 @app.route("/get_doc/<text>/<number>", methods = ["GET"])
 def get_doc(text, number):
     return bill_search(text, int(number))
+
+# @cross_origin()
+# @app.route("/get_doc_by_id/<text>", methods = ["GET"])
+# def get_by_id(text):
+#     return doc_by_id(text)
 
 @cross_origin()
 @app.route("/get_timeline/<bill_slug>", methods = ["GET"])
