@@ -2,25 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
-import { Chrono } from "react-chrono";
 import axios from 'axios';
 
 
 
 const BillPage = () => {
-   const [news, setNews] = useState([]);
+  //  const [news, setNews] = useState([]);
 
-   useEffect(() => {
-    const fetchData = async () => {
-      let query = 'DACA Act';
-      let url = "http://127.0.0.1:5000/get_news/"
-      const result = await axios.get(url+query);
+  //  useEffect(() => {
+  //   const fetchData = async () => {
+  //     let query = 'DACA Act';
+  //     let url = "http://127.0.0.1:5000/get_news/"
+  //     const result = await axios.get(url+query);
 
-      setNews(result.data);
-    };
+  //     setNews(result.data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
     const items = [{
         title: "May 1940",
@@ -95,13 +94,13 @@ const BillPage = () => {
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
                 <div className="bill__news">
-                  {news.map((article, index) => (
+                  {/* {news.map((article, index) => (
                   <div key={index}>
                     <h2>{article.title}</h2>
                     <p>{article.description}</p>
                     <a href={article.url}>Read more</a>
                   </div>
-                  ))}
+                  ))} */}
                 </div>
             <div className="bill__timeline">
                 
