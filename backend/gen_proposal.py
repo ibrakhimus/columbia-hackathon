@@ -9,9 +9,9 @@ def read_file (file):
 #     with open("gpt_res.txt", 'w') as file:
 #         file.write(content)
 
-def create_proposal(bill_name, sentiment, additional_info):
+def create_proposal(bill_info, sentiment, additional_info):
     sys_role = read_file("./sys_role.txt")
-    gpt_query = f"Bill Name: {bill_name}\nUser's Opinion: {sentiment}\nAdditional Info: {additional_info}"
+    gpt_query = f"Bill Name: {bill_info}\nUser's Opinion: {sentiment}\nAdditional Info: {additional_info}"
     
     res = gpt_client.chat.completions.create(
         model="gpt-3.5-turbo",
