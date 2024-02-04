@@ -37,7 +37,7 @@ function GraphPage() {
       nodes: {
         shape: 'dot',
         scaling: { min: 20, max: 100 },
-        font: { size: 20, face: 'Tahoma' },
+        font: { size: 20, face: 'Tahoma'},
       },
       edges: {
         color: { inherit: true },
