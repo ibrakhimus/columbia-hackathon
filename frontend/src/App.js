@@ -12,8 +12,11 @@ function App() {
   const [search, setSearch] = useState("")
   const [bill, setBill] = useState(null)
 
+  // Clean up function to disconnect the observer when the component unmounts
+
   return (
     <>
+    
     <div className="gradient-bg"></div>
     <Router>
       <Routes>
@@ -27,5 +30,7 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;

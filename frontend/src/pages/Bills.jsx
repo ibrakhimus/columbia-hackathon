@@ -44,21 +44,6 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
  
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    });
-
-    const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((el) => observer.observe(el));
-
-    // Clean up function to disconnect the observer when the component unmounts
-    return () => observer.disconnect();
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
@@ -127,19 +112,22 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
           <Skeleton width={100} height={15} /> 
         </>
       ) : (
-        billList.map(obj => {
-          const handleClick = () => {
-            setBill(obj);
-            navigate("/bill");
-          };
-        
-          return <Bill
-            img={obj["img_url"]}
-            name={obj["short_title"]}
-            data={obj["date"]}
-            onClick={handleClick}
-          />
-        })
-      )}
+          billList.map(obj => {
+            return <Bill
+              img={obj["img_url"]}
+              name={obj["short_title"]}
+              data={obj["date"]}
+              onClick={() => {
+                setBill(obj);
+                navigate("/bill");
+              }}
+
+            />
+          })
+      )}</div>
+      </div>
+    </section>
+  );
+};
 
 export default Bills;

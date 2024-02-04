@@ -16,6 +16,15 @@
   color: white;
 }
 
+@keyframes wipe-enter {
+	0% {
+		transform: scale(0, .025);
+	}
+	50% {
+		transform: scale(1, .025);
+	}
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
