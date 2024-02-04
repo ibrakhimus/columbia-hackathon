@@ -35,7 +35,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
               "author": meta["sponsor_name"],
               "party": meta["sponsor_party"],
               "date": meta["latest_major_action_date"],
-              "img_url": img["data"]
+              "img_url": img["data"],
+              "meta": meta
             });
           }
           setBillList(arr);

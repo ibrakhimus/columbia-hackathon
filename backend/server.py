@@ -32,7 +32,7 @@ def get_image(query):
 @app.route('/get_news/<query>/<amount>', methods=['GET'])
 async def get_news(query, amount):    
     response = requests.get("https://api.worldnewsapi.com/search-news", params={
-        "api-key": "2999e54b97f542f6bdc2ee3c47a754a2",
+        "api-key": "f6aca0f7577248b5bdfe2484911735ef",
         "text": query, 
         "number": amount,
         "source-countries": "us",
@@ -40,7 +40,7 @@ async def get_news(query, amount):
         "sort": "publish-time",
         "sort-direction": "DESC"
         })
-    # print(response.json())
+    print(response.json())
     return response.json()["news"]
 
 @app.route('/get_contact_info', methods=['GET'])
