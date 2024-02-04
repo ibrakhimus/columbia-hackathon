@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Network } from 'vis-network/standalone/esm/vis-network';
 import 'vis-network/styles/vis-network.css';
 import networkData from '../data/graph_data.json';
-import { Slider } from 'antd';
+import { Slider } from "antd"
 import Nav from '../components/Nav';
 
 const formatter = (value) => `${value}%`;
