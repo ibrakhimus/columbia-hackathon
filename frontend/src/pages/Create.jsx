@@ -11,9 +11,10 @@ const Create = () => {
   const [additionalInfo, setAdditionalInfo] = useState("");
 
   const onSubmit = async (e) => {
-    console.log("I was called")
+    // console.log("I was called")
     e.preventDefault();
-    console.log(billInfo, billOpinion, additionalInfo)
+    // console.log(billInfo, billOpinion, additionalInfo)
+    
     const response = await axios.post(`${backendUrl}/gen_bill_proposal`, {
       "bill_info": billInfo,
       "bill_opinion": billOpinion,
