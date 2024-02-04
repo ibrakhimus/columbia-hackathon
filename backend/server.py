@@ -4,6 +4,7 @@ from flask import Flask
 from image_search import image_search
 from doc_query import bill_search
 from auto_email import support_email
+from flask_cors import CORS
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
 CONGRES_SESSION = "117"
@@ -17,6 +18,7 @@ def read_file (file_path):
         return file.read()
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def ayo():
