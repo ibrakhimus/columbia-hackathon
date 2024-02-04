@@ -77,7 +77,7 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
 
           var docs = res["documents"][0];
           var ids = res["ids"][0];
-          var meta = res["metadatas"][0][0];
+          var meta = res["metadatas"][0];
 
           var arr = [];
           for (var i = 0; i < 9; i++) {
@@ -86,11 +86,11 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
             arr.push({
               "title": docs[i],
               "short_title": ids[i],
-              "author": meta["sponsor_name"],
-              "party": meta["sponsor_party"],
-              "date": meta["latest_major_action_date"],
+              "author": meta[i]["sponsor_name"],
+              "party": meta[i]["sponsor_party"],
+              "date": meta[i]["latest_major_action_date"],
               "img_url": img["data"],
-              "meta": meta
+              "meta": meta[i]
             });
           }
           setBillList(arr);

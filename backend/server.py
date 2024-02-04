@@ -63,6 +63,11 @@ def get_contact_info():
 def get_doc(text, number):
     return bill_search(text, int(number))
 
+# @cross_origin()
+# @app.route("/get_doc_by_id/<text>", methods = ["GET"])
+# def get_by_id(text):
+#     return doc_by_id(text)
+
 @cross_origin()
 @app.route("/get_timeline/<bill_slug>", methods = ["GET"])
 async def get_timeline(bill_slug):

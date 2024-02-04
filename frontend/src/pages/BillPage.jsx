@@ -11,14 +11,9 @@ import Bill from '../components/Bill';
 const backendUrl = "http://127.0.0.1:5000";
 
 const BillPage = ({ search, bill, setBill }) => {
-  
 
-
-  console.log(bill)
   const [news, setNews] = useState([]);
   const [img, setImg]  = useState("")
-  const [similarBills, setSimilarBills] = useState([]);
-  const [currentBillId, setCurrentBillId] = useState(null);
   const [billList, setBillList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   var navigate = useNavigate()
@@ -34,8 +29,8 @@ useEffect(() => {
 
           var docs = res["documents"][0];
           var ids = res["ids"][0];
-          var meta = res["metadatas"][0][0];
-
+          var meta = res["metadatas"][0];
+          console.log(res)
           var arr = [];
           for (var i = 0; i < 3; i++) {
             var img = await axios.get(`${backendUrl}/get_image/${ids[i]}`);
@@ -43,11 +38,11 @@ useEffect(() => {
             arr.push({
               "title": docs[i],
               "short_title": ids[i],
-              "author": meta["sponsor_name"],
-              "party": meta["sponsor_party"],
-              "date": meta["latest_major_action_date"],
+              "author": meta[i]["sponsor_name"],
+              "party": meta[i]["sponsor_party"],
+              "date": meta[i]["latest_major_action_date"],
               "img_url": img["data"],
-              "meta": meta
+              "meta": meta[i]
             });
           }
           setBillList(arr);
@@ -59,7 +54,7 @@ useEffect(() => {
       }
     }
     fetchData();
-  }, []);
+  }, [bill]);
 
   // const blobRef = useRef(null);
 
@@ -210,7 +205,7 @@ useEffect(() => {
             <div className="author__wing">{bill ? (bill["meta"]["sponsor_party"] == "D"? "Democrat": "Republican"): "Republican"}</div>
             <div className="line"></div>
             <div className="email__container">
-              <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
+              <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
             </div>
             <button onClick = {() => sendMail()}className="email__button">Send Email</button>
           </div>
