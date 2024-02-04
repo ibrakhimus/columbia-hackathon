@@ -44,7 +44,7 @@ def get_contact_info():
 
 @app.route("/get_doc/<text>/<number>", methods = ["GET"])
 def get_doc(text, number):
-    return bill_search(text, number)
+    return bill_search(text, int(number))
 
 @app.route("/get_timeline/<bill_slug>", methods = ["GET"])
 async def get_timeline(bill_slug):
