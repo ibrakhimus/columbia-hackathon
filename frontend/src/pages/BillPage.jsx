@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Nav from '../components/Nav';
-import { Chrono } from "react-chrono";
+// import { Chrono } from "react-chrono";
 import axios from 'axios';
 
 
@@ -35,13 +35,13 @@ const BillPage = () => {
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
                 <div className="bill__news">
-                  {news.map((article, index) => (
+                  {/* {news.map((article, index) => (
                   <div key={index}>
                     <h2>{article.title}</h2>
                     <p>{article.description}</p>
                     <a href={article.url}>Read more</a>
                   </div>
-                  ))}
+                  ))} */}
                 </div>
             <div className="bill__timeline">
                 
