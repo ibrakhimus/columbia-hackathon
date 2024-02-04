@@ -10,7 +10,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [bill, setBill] = useState(null)
 
-  useEffect(() => {
+useEffect(() => {
     const blob = document.getElementById("blob");
 
     window.onpointermove = event => { 
@@ -22,11 +22,11 @@ function App() {
       }, { duration: 3000, fill: "forwards" });
     }
   }, []);
-  
+
   return (
     <>
     <div class="gradient-bg"></div>
-    <div id="blob"></div>
+<div id="blob"></div>
     <div id="blur"></div>
     <Router>
       <Routes>
