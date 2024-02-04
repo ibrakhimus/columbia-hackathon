@@ -1,19 +1,24 @@
-import requests
 import json
-import random
-ENDPOINT = "https://serpapi.com/search.json"
-API_KEY = '04e947af88ca30f1f0c38e03150ad446a2fc4b7fc424bb0694d863dcc8274037'
+import os
+from pprint import pprint
+import requests
 
-# reference: https://serpapi.com/search-api
+
+# Add your Bing Search V7 subscription key and endpoint to your environment variables.
+
+endpoint = "https://api.bing.microsoft.com/v7.0/images/search"
+
+# Query to search for
+
 def image_search(query):
-    params = {
-        'q': query,
-        'tbm': 'isch',  # this is for image search
-        'api_key': API_KEY
-    }
-    response = requests.get(ENDPOINT, params=params)
-    
-    if response.status_code == 200:
-        return response.json()["images_results"][random.randint(0, len(response.json()["images_results"]))]["original"]
-    else:
-        return f"Error: {response.status_code}"
+
+
+    # Construct a request
+    mkt = 'en-US'
+    params = {'q': query, 'mkt': mkt}
+    headers = {'Ocp-Apim-Subscription-Key': "bc459722f264429897627d3b3dc675cd"}
+
+    response = requests.get(endpoint, headers=headers, params=params)
+    response.raise_for_status()
+
+    return(response.json()["value"][0]["contentUrl"])

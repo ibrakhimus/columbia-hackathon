@@ -14,7 +14,6 @@ collection = client.get_collection(name="bill_db", embedding_function=openai_ef)
 
 email_str = "Write a formal email to the following congressmen supporting the following bill which they sponsored. Only respond with the email body and without the subject line as it will be directly  sent. Do not assume any background for the person emailing and highlight parts of the bill. The congressman is {}, who is in the {}, the Bill number is {}, and the bill title is {}"
 
-
 def support_email(short_name):
     res = collection.get(ids = [short_name], include = [ "documents", "metadatas" ])
     bill_obj = res['metadatas'][0]["json_str"]
