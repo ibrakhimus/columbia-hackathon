@@ -537,10 +537,11 @@ margin-bottom: 200px;
 }
 
 .bill__middle--title {
-  font-size: 80px;
+  font-size: 60px;
   font-weight: bolder;
   text-align: center;
   margin-bottom: 10px;
+  max-width: 1000px;
 }
 
 .bill__middle--date {
