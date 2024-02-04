@@ -244,6 +244,7 @@ ul {
 li {
   padding: 0 8px;
   color: black;
+  font-size: 20px;
 }
 
 nav {
@@ -283,7 +284,7 @@ nav {
   background-color: skyblue;
   color: #133061;
   border-radius: 25px;
-  padding: 8px 25px;
+  padding: 18px 25px;
 }
 
 .nav__logo {
@@ -298,6 +299,20 @@ nav {
 
 .nav__button:hover {
   cursor: pointer;
+}
+
+.nav__link {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20px;
+  transition: all 300ms ease;
+  margin: 0 20px;
+}
+
+.nav__link:hover {
+  color: #133061;
+  scale: 1.1;
 }
 
 video {
@@ -327,6 +342,7 @@ video {
 .search__container {
   width: 100%;
   display: flex;
+  margin-top: 10px;
 }
 
 

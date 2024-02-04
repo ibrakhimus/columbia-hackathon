@@ -24,6 +24,8 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
       const keyframes = {
         transform: `translate(${x}px, ${y}px) scale(${interacting ? 2 : 1})`
       }
+      document.addEventListener('mousemove', handleMouseMove);
+
       
       trailer.current.animate(keyframes, { 
         duration: 800, 
@@ -56,12 +58,10 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
     // Clean up function to disconnect the observer when the component unmounts
     return () => observer.disconnect();
 
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Clean up the event listener when the component is unmounted
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    }
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+
   }, []);
 
   
@@ -109,9 +109,9 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
   console.log(billList)
   return (
     <section id="bills">
-      <div id="trailer" ref={trailer}>
+      {/* <div id="trailer" ref={trailer}>
         <img id="trailer-icon" src={arrowRight} alt="" />
-      </div>
+      </div> */}
       <div className="row">
         <Nav classNam ="hidden"/>
         <div className="hero__search--outer hidden">

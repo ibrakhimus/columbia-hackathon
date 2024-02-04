@@ -211,7 +211,7 @@ useEffect(() => {
             </div>
             <div className="bill__middle--container">
             <div className="behavior__score--contaner">
-                Positive 0.7
+                Republican Backed
               </div>
 
             <div className="summary__container">
