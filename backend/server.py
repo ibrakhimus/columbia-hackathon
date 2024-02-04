@@ -64,9 +64,14 @@ async def get_timeline(bill_slug):
     timeline = res.json()["results"][0]["actions"]
     return timeline
 
-@app.route("/support_email/<short_name>")
-def support_email_data(short_name):
-    return support_email(short_name)
+@app.route("/support_email", methods = ["GET"])
+async def support_email_data():
+    # if(request.args.get("short_name") != None):
+    #     short_name = request.args.get("short_name")
+    #     return await support_email(str(short_name))
+    # else:
+    #     return "No bill name provided"
+    return await support_email("Homeownership for DREAMers Act")
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
