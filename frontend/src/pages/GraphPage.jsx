@@ -3,11 +3,12 @@ import { Network } from 'vis-network/standalone/esm/vis-network';
 import 'vis-network/styles/vis-network.css';
 import networkData from '../data/graph_data.json';
 import { Slider } from 'antd';
+import Nav from '../components/Nav';
 
 const formatter = (value) => `${value}%`;
 
 function GraphPage() {
-  const [slider, setSlider] = useState(5);
+  const [slider, setSlider] = useState(10);
   const [filteredEdges, setFilteredEdges] = useState([]);
   const networkContainerRef = useRef(null);
   const networkInstanceRef = useRef(null); // Ref to store the network instance
@@ -35,12 +36,12 @@ function GraphPage() {
     const options = {
       nodes: {
         shape: 'dot',
-        scaling: { min: 20, max: 80 },
+        scaling: { min: 20, max: 100 },
         font: { size: 20, face: 'Tahoma' },
       },
       edges: {
         color: { inherit: true },
-        width: 0.15,
+        width: 0.25,
         smooth: { type: 'continuous' },
       },
       interaction: { hideEdgesOnDrag: true, tooltipDelay: 200 },
@@ -49,17 +50,19 @@ function GraphPage() {
 
     if (networkContainerRef.current) {
       if (!networkInstanceRef.current) {
-        networkInstanceRef.current = new Network(networkContainerRef.current, { nodes: networkData.nodes.map(obj => ({
-          ...obj,
-          title: obj.label // Set the title to be equal to the label
-        })), edges: filteredEdges }, options);
+        networkInstanceRef.current = new Network(networkContainerRef.current, {
+          nodes: networkData.nodes.map(obj => ({
+            ...obj,
+            title: obj.label // Set the title to be equal to the label
+          })), edges: filteredEdges
+        }, options);
       } else {
         // Update the network data without re-initializing the network
         networkInstanceRef.current.setData({ nodes: networkData.nodes, edges: filteredEdges });
       }
     }
-    
-  
+
+
   }, [filteredEdges]); // Update this effect to depend on `filteredEdges`
 
   const handleSliderChange = (value) => {
@@ -67,27 +70,31 @@ function GraphPage() {
   };
 
   return (
-    <div style={{ position: 'relative', height: '100vh', width: '100%' }}>
-      <div ref={networkContainerRef} id="mynetwork" style={{ height: '100%', width: '100%' }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '100px',
-        left: "0",
-        right: "0",
-        margin: "auto",
-        width: "300px",
-        boxShadow: "4px 4px 8px rgba(70, 70, 70, 1.0)",
-        borderRadius: "8px",
-        backgroundColor: "lightgray",
-        opacity: 0.5
-      }}>
-        <Slider
-          value={slider}
-          onChange={handleSliderChange}
-          tooltipVisible
-          tipFormatter={formatter}
-          step = {5}
-        />
+    <div>
+      <Nav />
+
+      <div style={{ position: 'relative', height: '80vh', width: '100%' }}>
+        <div ref={networkContainerRef} id="mynetwork" style={{ height: '100%', width: '100%' }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '100px',
+          left: "0",
+          right: "0",
+          margin: "auto",
+          width: "300px",
+          boxShadow: "4px 4px 8px rgba(70, 70, 70, 1.0)",
+          borderRadius: "8px",
+          backgroundColor: "lightgray",
+          opacity: 0.5
+        }}>
+          <Slider
+            value={slider}
+            onChange={handleSliderChange}
+            tooltipVisible
+            tipFormatter={formatter}
+            step={10}
+          />
+        </div>
       </div>
     </div>
   );

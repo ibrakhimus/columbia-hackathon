@@ -18,10 +18,10 @@ to_id = {}
 with open("total_db.json", "r") as f:
     json_data = json.load(f)
 
-docs =  json_data["documents"]
-ids = json_data["ids"]
-embeddings = json_data["embeddings"]
-metadata = json_data["metadatas"]
+docs =  json_data["documents"][:3000]
+ids = json_data["ids"][:3000]
+embeddings = json_data["embeddings"][:3000]
+metadata = json_data["metadatas"][:3000]
 metadata = [eval(obj["json_str"]) for obj in metadata]
 
 
@@ -68,9 +68,9 @@ def edge_pick(sentence):
 
 topics = []
 edges = []
-for i in range(0,8243, 500):
-    topics += topic_pick(docs[i:i+500])
-    edges += edge_pick(docs[i:i+500])
+for i in range(0,3001, 400):
+    topics += topic_pick(docs[i:i+400])
+    edges += edge_pick(docs[i:i+400])
 
 edge_list = []
 nodes = []
@@ -86,7 +86,7 @@ for _ in range(25):
     x_coords.append(x)
     y_coords.append(y)
 
-for i in range(8243):
+for i in range(2991):
     grp = topic_to_group[topics[i][0]]
     nodes.append({
         "id": i,
@@ -97,10 +97,13 @@ for i in range(8243):
         "x": x_coords[grp] +  np.random.normal(0, 1500),
         "y": y_coords[grp] +  np.random.normal(0, 1500),
     })
-
+    
+    print(i, len(edges[i]))
     for val in edges[i]:
-        edge_list.append({"from":i,"to": to_id[val]})
-
+        try:
+            edge_list.append({"from":i,"to": to_id[val]})
+        except:
+            pass
 with open("graph_data.json", "w") as f:
     json.dump({"nodes": nodes, "edges": edge_list}, f)
 print(len(nodes))

@@ -87,20 +87,20 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
   //   };
   // }, []);
 
-  useEffect(() => {
-    const search = bill.search; // Replace with the actual property name in the bill object
-    const currentBillId = bill.id; // Replace with the actual property name in the bill object
+  // useEffect(() => {
+  //   const search = bill.search; // Replace with the actual property name in the bill object
+  //   const currentBillId = bill.id; // Replace with the actual property name in the bill object
   
-    // Fetch the current bill...
+  //   // Fetch the current bill...
   
-    // Fetch the similar bills
-    fetch(`${backendUrl}/search?term=${search}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
-        setSimilarBills(filteredBills.slice(0, 3));
-      });
-  }, [bill]); // Add bill to the dependency array
+  //   // Fetch the similar bills
+  //   fetch(`${backendUrl}/search?term=${search}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const filteredBills = data.filter((bill) => bill.id !== currentBillId);
+  //       setSimilarBills(filteredBills.slice(0, 3));
+  //     });
+  // }, [bill]); // Add bill to the dependency array
 
 
   if (bill == null) {
@@ -204,7 +204,7 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
         <div className="billpage__container">
         <div className="bill__author--container">
             <figure className="author__img--wrapper">
-              <img className="author__img" src={img} alt="author" />
+              <img className="author__img" src={bill ? bill["img"] : ""} alt="author" />
             </figure>
             <div className="author__name">{bill ? bill["author"] : "Bill Clinton"}</div>
             <div className="author__wing">{bill ? (bill["meta"]["sponsor_party"] == "D"? "Democrat": "Republican"): "Republican"}</div>
@@ -238,13 +238,13 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
         </div>
 
 
-        <div className="similar__bills--container">
+        {/* <div className="similar__bills--container">
             <h1 className="similar__bills--title">Similar Bills</h1>
             <div className="similar__bills--wrapper">
               <div className="bill">
               <button onClick = {() => sendMail()}className="email__button">Send Email</button>
-                <figure className="bill__img--wrapper" onClick={bill.onClick}>
-                    <img className="bill__img" src={bill.img} alt={bill.name}/>
+                <figure className="bill__img--wrapper" onClick={()=>{}}>
+                    <img className="bill__img" src={() => {}} alt={() => {}}/>
                 </figure>
                 <div className="bill__description">
                     <h3 className="bill__title">{bill.name.length > 45 ? bill.name.substring(0, 45) + '...' : bill.name}</h3>
@@ -252,7 +252,7 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
                 </div>
             </div>
             </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );
