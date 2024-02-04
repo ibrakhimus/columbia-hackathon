@@ -294,6 +294,7 @@ select {
 .billpage__container {
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .bill__author--container {

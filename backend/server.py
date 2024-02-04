@@ -4,6 +4,7 @@ from flask import Flask
 from image_search import image_search
 from doc_query import bill_search
 from auto_email import support_email
+from flask_cors import CORS
 HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
 BASEURL = "https://api.propublica.org/congress/v1/"
 CONGRES_SESSION = "117"
@@ -17,26 +18,29 @@ def read_file (file_path):
         return file.read()
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['GET'])
 def ayo():
-    return "theres nothing here bruh"
+    return "theres nothing here bruh you need more endpoints"
 
 @app.route('/get_image/<query>', methods=['GET'])
 def get_image(query):
     return image_search(query)
 
-@app.route('/get_news/<query>', methods=['GET'])
-async def get_news(query):
+# returns an array of objects
+@app.route('/get_news/<query>/<amount>', methods=['GET'])
+async def get_news(query, amount):    
     response = requests.get("https://api.worldnewsapi.com/search-news", params={
         "api-key": "d854699510c743a9b860bab2675b1b4d",
         "text": query, 
+        "number": amount,
         "source-countries": "us",
         "language": "en",
         "sort": "publish-time",
-        "sort-direction": "DESC",
+        "sort-direction": "DESC"
         })
-    return response.json()
+    return response.json()["news"]
 
 @app.route('/get_contact_info', methods=['GET'])
 def get_contact_info():
