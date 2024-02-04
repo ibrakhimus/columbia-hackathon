@@ -7,11 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const backendUrl = "http://127.0.0.1:5000";
 
-<<<<<<< HEAD
 const BillPage = ({ search, bill, setBill }) => {
-=======
-const BillPage = ({ search, setSearch, bill, setBill }) => {
->>>>>>> origin
 
   const navigate = useNavigate()
   const [billList, setBillList] = useState([])
@@ -71,11 +67,7 @@ const BillPage = ({ search, setSearch, bill, setBill }) => {
         const filteredBills = data.filter((bill) => bill.id !== bill);
         setSimilarBills(filteredBills.slice(0, 3));
       });
-<<<<<<< HEAD
   }, [search, bill]);
-=======
-  }, [search, setBill]);
->>>>>>> origin
 
   // const blobRef = useRef(null);
 
