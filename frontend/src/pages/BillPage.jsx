@@ -1,23 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Nav from '../components/Nav';
+import { Chrono } from "react-chrono";
+import axios from 'axios';
+
+
 
 const BillPage = () => {
-    const [author, setAuthor] = useState({});
-
-    useEffect(() => {
-        axios.get('http://127.0.0.1:5000/get_doc/daca/4')
-            .then(response => {
-                console.log(response.data)
-                setAuthor(response.data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }, []);
-
     return (
+        <>
+        <Nav />
         <section id="bill">
             <button className="back">Back</button>
             <div className="billpage__container">
@@ -42,10 +35,20 @@ const BillPage = () => {
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
                 <div className="bill__news">
-
+                  {news.map((article, index) => (
+                  <div key={index}>
+                    <h2>{article.title}</h2>
+                    <p>{article.description}</p>
+                    <a href={article.url}>Read more</a>
+                  </div>
+                  ))}
                 </div>
+            <div className="bill__timeline">
+                
+            </div>
             </div>
         </section>
+        </>
     );
 }
 

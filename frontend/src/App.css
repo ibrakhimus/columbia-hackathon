@@ -287,13 +287,13 @@ select {
 /* BILL PAGE */
 
 #bill {
-  margin: 0 20px;
-  margin-top: 140px;
+  margin: 0 10px;
+  margin-top: 50px;
 }
 
 .billpage__container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .bill__author--container {
@@ -301,13 +301,13 @@ select {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 3px 3px 0 rgb(0 0 0 / 30%);
-  padding: 40px;
+  padding:  40px;
   border-radius: 20px;
 }
 
 .author__img--wrapper {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 16px;
@@ -320,13 +320,13 @@ select {
 }
 
 .author__name {
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
 .author__wing {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
   margin-bottom: 16px;
 }
@@ -338,7 +338,7 @@ select {
 }
 
 .email__text {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   margin-left: 8px;
 }
@@ -349,9 +349,9 @@ select {
   background-color: #000000;
   transition: all 300ms ease;
   cursor: pointer;
-  width: 200px;
-  height: 60px;
-  font-size: 20px;
+  width: 160px;
+  height: 50px;
+  font-size: 16px;
   color: #fff;
   border-radius: 10px;
   border: none;
@@ -386,8 +386,28 @@ select {
 }
 
 .bill__middle--summary {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   margin-top: 60px;
   max-width: 600px;
+}
+
+.bill__news {
+  width: 400px;
+  height: 800px;
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 30%);
+  padding:  40px;
+  border-radius: 20px;
+  
+}
+
+.news__title {
+  font-size: 36px;
+  text-align: center;
+}
+
+.bill__timeline {
+  max-width: 1000px;
+  height: 400px;
+  margin: 0 auto;
 }
