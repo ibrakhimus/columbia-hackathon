@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Landing search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
         <Route path="/bills" element={<Bills search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
         <Route path="/bill" element={<BillPage search = {search} setSearch = {setSearch} bill = {bill} setBill = {setBill}/>} />
-        <Route path="/graph" element={<GraphPage/>} />
+        <Route path="/graph" element={<GraphPage setBill = {setBill}/>} />
         <Route path='/createbill' element={<Create />} />
       </Routes>
     </Router>

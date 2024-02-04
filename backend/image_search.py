@@ -18,7 +18,6 @@ def image_search(query):
 
     response = requests.get(endpoint, headers=headers, params=params)
     response.raise_for_status()
-    print(response.json())
     return(response.json()["value"][0]["contentUrl"])
 
 def face_search(query):

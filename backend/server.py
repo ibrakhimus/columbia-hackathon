@@ -63,6 +63,11 @@ def get_contact_info():
 def get_doc(text, number):
     return bill_search(text, int(number))
 
+# @cross_origin()
+# @app.route("/get_doc_by_id/<text>", methods = ["GET"])
+# def get_by_id(text):
+#     return doc_by_id(text)
+
 @cross_origin()
 @app.route("/get_timeline/<bill_slug>", methods = ["GET"])
 async def get_timeline(bill_slug):
@@ -80,9 +85,9 @@ async def support_email_data(short_name):
 @cross_origin()
 @app.route("/gen_bill_proposal", methods = ["POST"])
 def gen_bill_proposal():
-    if((request.args.get("bill_info") != None) and (request.args.get("bill_opinion") != None)):
+    if((str(request.args.get("bill_info")) != None) and (str(request.args.get("bill_opinion")) != None)):
         return create_proposal(str(request.args.get("bill_info")), str(request.args.get("bill_opinion")), str(request.args.get("additional_info")))
     return "invalid request - please provide bill_name, bill_opinion, additional_info (optional)"
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
