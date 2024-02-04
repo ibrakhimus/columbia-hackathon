@@ -1,0 +1,45 @@
+\documentclass[16pt]{article}
+\begin{document}
+
+\title{\textbf{\textit{A Bill to Provide Extended Medical Aid for DACA Families}}}
+\author{Your Constituents}
+\date{\today}
+\maketitle
+
+\section*{WHEREAS}
+
+WHEREAS, the DACA program provides temporary relief from deportation and work authorization to undocumented immigrants who were brought to the United States as children;
+
+WHEREAS, DACA recipients and their families face significant barriers in accessing affordable and comprehensive healthcare;
+
+WHEREAS, lack of access to medical care can result in serious health consequences for DACA families, including delayed diagnoses, untreated chronic conditions, and limited preventive care;
+
+WHEREAS, providing extended medical aid to DACA families will ensure that they have equal access to healthcare services and contribute to overall public health;
+
+WHEREAS, access to medical care is a fundamental human right and should not be denied based on immigration status;
+
+WHEREAS, extending medical aid to DACA families aligns with our values of compassion, fairness, and social justice;
+
+WHEREAS, supporting the health and well-being of all individuals, regardless of their immigration status, is essential for building a strong and inclusive community;
+
+WHEREAS, addressing the healthcare needs of DACA families will promote a healthier and more equitable society;
+
+WHEREAS, it is in the best interest of our community to provide extended medical aid to DACA families;
+
+WHEREAS, the University has the capacity and resources to allocate funds for this purpose;
+
+\section*{THEREFORE}
+
+BE IT RESOLVED BY YOUR CONSTITUENTS, that the Student Senate allocates a total of $\$500,000$ from the Student Assistance Fund to establish a program for extended medical aid for DACA families;
+
+BE IT FURTHER RESOLVED, that the program will provide comprehensive healthcare coverage, including preventive care, mental health services, and emergency medical treatment, to DACA families;
+
+BE IT FURTHER RESOLVED, that the program will be administered by the University Health Services in collaboration with local healthcare providers to ensure a seamless and coordinated delivery of care;
+
+BE IT FURTHER RESOLVED, that the University Health Services will provide outreach and education programs to inform DACA families about the availability of extended medical aid and assist them in accessing the necessary resources;
+
+BE IT FURTHER RESOLVED, that the Student Senate will monitor the implementation and effectiveness of the program and make adjustments as needed to ensure it meets the healthcare needs of DACA families;
+
+BE IT FINALLY RESOLVED, that copies of this bill be sent to the President of the University, the Chief of Staff, and all members of the Student Senate for their consideration.
+
+\end{document}

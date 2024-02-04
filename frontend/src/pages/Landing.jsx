@@ -7,29 +7,9 @@ import { useNavigate } from "react-router-dom";
 const Landing = ({ search, setSearch, bill, setBill }) => {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const blob = document.getElementById("blob");
-  
-    window.onpointermove = event => { 
-      const { clientX, clientY } = event;
-  
-      const adjustedX = Math.min(clientX - blob.offsetWidth / 2, window.innerWidth - blob.offsetWidth);
-      const adjustedY = Math.min(clientY - blob.offsetHeight / 2, window.innerHeight - blob.offsetHeight);
-  
-      blob.animate({
-        left: `${adjustedX}px`,
-        top: `${adjustedY}px`
-      }, { duration: 3000, fill: "forwards" });
-    }
-  }, []);
-
 
   return (
     <section id="hero">
-      <div class='blob__container'>
-        <div id="blob"></div>
-        <div id="blur"></div>
-      </div>
       <video
         src="https://cdn.vidzflow.com/v/H0LDXZjsnq_1080p_1703000142.mp4"
         autoPlay
