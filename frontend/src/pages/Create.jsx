@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 import CreateBill from "../assets/createbill.svg";
 
+const backendUrl = "http://127.0.0.1:5000";
+
 const Create = () => {
+
   return (
     <section>
       <Nav />
@@ -18,6 +21,14 @@ const Create = () => {
           <form className="create__container--right-form">
             <label className="create__container--label">
               <div className="label-div">Proposed Bill:</div>
+              <textarea />
+            </label>
+            <label className="create__container--label">
+              <div className="label-div">Opinion:</div>
+              <textarea />
+            </label>
+            <label className="create__container--label">
+              <div className="label-div">Additional Information:</div>
               <textarea />
             </label>
             <input

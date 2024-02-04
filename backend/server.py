@@ -83,6 +83,6 @@ def gen_bill_proposal():
     if((request.args.get("bill_info") != None) & (request.args.get("bill_opinion") != None)):
         return create_proposal(str(request.args.get("bill_info")), str(request.args.get("bill_opinion")), str(request.args.get("additional_info")))
     return "invalid request - please provide bill_name, bill_opinion, additional_info (optional)"
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
