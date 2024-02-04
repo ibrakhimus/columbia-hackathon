@@ -16,7 +16,6 @@ email_str = "Write a formal email to the following congressmen supporting the fo
 
 def support_email(short_name):
     res = collection.get(ids = [short_name], include = [ "documents", "metadatas" ])
-
     bill_obj = res['metadatas'][0]["json_str"]
     bill_dict = eval(bill_obj)
     name = bill_dict["sponsor_name"]
@@ -24,11 +23,12 @@ def support_email(short_name):
     email = name.lower().replace(" ", ".") + "@mail." + chamber + ".gov"
     bill_num = bill_dict["number"]
     title  = bill_dict["title"]
+    
     email_body = gpt_client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "system", "content": email_str.format(name, chamber, bill_num, title)}])
     subject = f"Support for {bill_num} - {short_name}"
     return(email, email_body.choices[0].message, subject)
 
-# if __name__ == "__main__":
-#     print(support_email("Homeownership for DREAMers Act"))
+if __name__ == "__main__":
+    print(support_email("Homeownership for DREAMers Act"))
