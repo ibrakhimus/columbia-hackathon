@@ -11,30 +11,30 @@ const Landing = () => {
         loop
         muted
       />
-      <div className="herovideo--lighting"></div>
-      <div className="heroinner">
+      <div className="hero__video--lighting"></div>
+      <div className="hero__inner">
         <Nav />
         <div className="divider"></div>
-        <div className="herobelow-divider">
-          <div className="homehero--headline">
-            <div className="homehero-1">
+        <div className="hero__below-divider">
+          <div className="home__hero--headline">
+            <div className="home__hero-1">
               <div>Simplify</div>
             </div>
-            <div className="homehero-2">
+            <div className="home__hero-2">
               <div>Bills</div>
             </div>
-            <div className="homehero-3">
+            <div className="home__hero-3">
               <div>Amplify,</div>
             </div>
-            <div className="homehero-4">
+            <div className="home__hero-4">
               <div>Insight.</div>
             </div>
           </div>
-          <h1 className="heroh1">
+          <h1 className="hero__h1">
             Looking through bills is impossible, we make it easy to see bills
             and see what other people are saying.
           </h1>
-          <div className="herosearch--outer">
+          <div className="hero__search--outer">
             <Searchbar />
           </div>
         </div>

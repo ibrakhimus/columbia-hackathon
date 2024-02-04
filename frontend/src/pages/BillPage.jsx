@@ -15,7 +15,7 @@ const BillPage = ({ bill, setBill }) => {
   useEffect(() => {
     
     const loadImg = async() =>{
-      var img_load = await axios.get(`${backendUrl}/get_image/${bill ? bill["author"] : "Bill Clinton"}`);
+      var img_load = await axios.get(`${backendUrl}/get_face/${bill ? bill["author"] : "Bill Clinton"}`);
       setImg(img_load["data"])
     }
     loadImg()
