@@ -71,14 +71,14 @@ async def get_timeline(bill_slug):
     return timeline
 
 @cross_origin()
-@app.route("/support_email/", methods = ["GET"])
-async def support_email_data():
+@app.route("/support_email/<short_name>", methods = ["GET"])
+async def support_email_data(short_name):
     # if(request.args.get("short_name") != None):
     #     short_name = request.args.get("short_name")
     #     return await support_email(str(short_name))
     # else:
     #     return "No bill name provided"
-    return support_email("Homeownership for DREAMers Act")
+    return support_email(short_name)
 
 if __name__ == '__main__':
     app.run(debug=True)

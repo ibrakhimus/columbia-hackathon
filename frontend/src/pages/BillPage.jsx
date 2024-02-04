@@ -100,6 +100,15 @@ const BillPage = ({ bill, setBill }) => {
     return email;
   }
 
+  async function sendMail() {
+    if (bill) {
+      var response = await axios.get(`${backendUrl}/support_email/${bill["short_title"]}`)
+      var res = response.json()
+      console.log(res)
+    }
+    
+  }
+
 
   return (
     <>
@@ -118,7 +127,7 @@ const BillPage = ({ bill, setBill }) => {
               <FontAwesomeIcon icon={faEnvelope} />
               <div className="email__text">{bill ? constructEmail(bill["author"], (bill["meta"]["number"][0] == "S"?"Senate" : "House")) : "billclinton@gmail.com"}</div>
             </div>
-            <button className="email__button">Send Email</button>
+            <button onClick = {sendMail}className="email__button">Send Email</button>
           </div>
 
           <div className="bill__middle--container">
