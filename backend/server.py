@@ -1,7 +1,7 @@
 import requests
 import json
 from flask import Flask, request
-from image_search import image_search
+from image_search import image_search, face_search
 from doc_query import bill_search
 from auto_email import support_email
 from flask_cors import CORS, cross_origin
@@ -29,6 +29,12 @@ def ayo():
 @app.route('/get_image/<query>', methods=['GET'])
 def get_image(query):
     return image_search(query)
+
+@cross_origin()
+@app.route('/get_face/<query>', methods=['GET'])
+def get_image(query):
+    return face_search(query)
+
 
 # returns an array of objects
 @cross_origin()
