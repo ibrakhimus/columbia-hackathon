@@ -49,9 +49,8 @@ def get_doc(text, number):
 @app.route("/get_timeline/<bill_slug>", methods = ["GET"])
 async def get_timeline(bill_slug):
     url = "https://api.propublica.org/congress/v1/118/bills/{}.json".format(bill_slug)
-    res = requests.get(url, headers={'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'})
+    res = requests.get(url, headers=HEADERS)
     timeline = res.json()["results"][0]["actions"]
-
     return timeline
 
 @app.route("/support_email/<short_name>")
