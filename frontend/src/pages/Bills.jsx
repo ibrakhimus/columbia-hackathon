@@ -3,12 +3,12 @@ import Bill from "../components/Bill";
 import Searchbar from "../components/Searchbar";
 import Nav from "../components/Nav";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 const backendUrl = "http://127.0.0.1:5000";
 
 const Bills = ({ search, setSearch, bill, setBill }) => {
-
+  const navigate = useNavigate()
   const [billList, setBillList] = useState([])
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,7 +56,7 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
       <div className="row">
         <Nav />
         <div className="hero__search--outer">
-          <Searchbar setSearch={setSearch} />
+          <Searchbar search = {search} setSearch={setSearch} />
         </div>
         {isLoading ? "Loading..." :
         <div className="bills__container">
@@ -65,6 +65,10 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
               img={obj["img_url"]}
               name={obj["short_title"]}
               data={obj["date"]}
+              onClick={() => {
+                setBill(obj);
+                navigate("/bill");
+              }}
             />
           })}
         </div>}
