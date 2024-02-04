@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRef } from 'react';
 import arrowRight from "../assets/right-arrow.png";
+import Skeleton from 'react-loading-skeleton';
+
 
 const backendUrl = "http://127.0.0.1:5000";
 
@@ -117,23 +119,27 @@ const Bills = ({ search, setSearch, bill, setBill }) => {
         <div className="hero__search--outer hidden">
           <Searchbar search = {search} setSearch={setSearch} />
         </div>
-        {isLoading ? "Loading..." :
         <div className="bills__container">
-          {billList.map(obj => {
-            return <Bill
-              img={obj["img_url"]}
-              name={obj["short_title"]}
-              data={obj["date"]}
-              onClick={() => {
-                setBill(obj);
-                navigate("/bill");
-              }}
-            />
-          })}
-        </div>}
-      </div>
-    </section>
-  );
-};
+        {isLoading ? (
+        <>
+          <Skeleton width={300} height={350} />
+          <Skeleton width={100} height={15} /> 
+          <Skeleton width={100} height={15} /> 
+        </>
+      ) : (
+        billList.map(obj => {
+          const handleClick = () => {
+            setBill(obj);
+            navigate("/bill");
+          };
+        
+          return <Bill
+            img={obj["img_url"]}
+            name={obj["short_title"]}
+            data={obj["date"]}
+            onClick={handleClick}
+          />
+        })
+      )}
 
 export default Bills;
