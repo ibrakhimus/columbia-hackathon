@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import Searchbar from "../components/Searchbar";
 import { useEffect } from "react";
+import Latex from 'react-latex';
 
 import { useNavigate } from "react-router-dom";
 const Landing = ({ search, setSearch, bill, setBill }) => {
@@ -16,6 +17,7 @@ const Landing = ({ search, setSearch, bill, setBill }) => {
         loop
         muted
       />
+
       <div className="hero__video--lighting"></div>
       <div className="hero__inner">
         <Nav />
