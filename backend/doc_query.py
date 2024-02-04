@@ -16,6 +16,11 @@ def bill_search(text, n_results = 1, include = ["documents", "metadatas", "dista
         n_results = n_results,
         include = include
     )
+    print(response)
+    try: 
+        response["metadatas"] = [[eval(obj[0]["json_str"])] for obj in response["metadatas"]]
+    except:
+        pass
     return response
 
 # if __name__ == "__main__":
