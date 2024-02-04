@@ -1,8 +1,9 @@
 import React from "react";
 import Nav from "../components/Nav";
 import Searchbar from "../components/Searchbar";
-
-const Landing = () => {
+import { useNavigate } from "react-router-dom";
+const Landing = ({ search, setSearch, bill, setBill }) => {
+  const navigate = useNavigate()
   return (
     <section id="hero">
       <video
@@ -35,7 +36,7 @@ const Landing = () => {
             and see what other people are saying.
           </h1>
           <div className="hero__search--outer">
-            <Searchbar />
+            <Searchbar search = {search}  setSearch = {setSearch} nav_funct={() => navigate('/bills')}/>
           </div>
         </div>
       </div>

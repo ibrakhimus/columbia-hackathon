@@ -6,9 +6,9 @@ import axios from 'axios';
 
 
 
-const BillPage = () => {
+const BillPage = ({bill}) => {
 
-
+  console.log(bill)
   const [news, setNews] = useState([]);
 
   useEffect(() => {
