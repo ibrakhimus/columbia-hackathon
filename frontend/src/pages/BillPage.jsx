@@ -51,23 +51,6 @@ const BillPage = () => {
       },
      ];
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //       const result = await axios.get('https://api.worldnewsapi.com/search-news', {
-    //         params: {
-    //           text: 'DACA Act',
-    //           language: 'en',
-    //           number: 10,
-    //           'api-key': '2999e54b97f542f6bdc2ee3c47a754a2',
-    //         }
-    //       });
-    
-    //       setNews(result.data);
-    //     };
-    
-    //     fetchData();
-    //   }, []);
-
 
     return (
         <>
@@ -95,19 +78,21 @@ const BillPage = () => {
                     <div className="bill__middle--sponsors">Sponsors: Mahdi Tanzim</div>
                     <div className="bill__middle--summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero facilis vel necessitatibus temporibus exercitationem perferendis itaque, reiciendis quam corporis labore!</div>
                 </div>
-                <div className="bill__news">
+                <div className="timeline__container">
+                  lol
+                </div>
+            </div>
+            <div className="bill__news">
                   {news.map((article, index) => (
-                  <div key={index}>
-                    <h2>{article.title}</h2>
-                    <img src={article.image} alt={article.title}/>
-                    <p>{article.text.substring(0, 200)}...</p>
+                  <div className='article' key={index}>
+                    <figure className="article__img--wrapper">
+                      <img className='article__img' src={article.image} alt={article.title}/>
+                    </figure>
+                    <h2 className='article__title'>{article.title}</h2>
+                    <p className='article__text'>{article.text.substring(0, 200)}...</p>
                   </div>
                   ))}
                 </div>
-            <div className="bill__timeline">
-                
-            </div>
-            </div>
         </section>
         </>
     );
