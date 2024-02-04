@@ -1,10 +1,13 @@
 import React from "react";
+import Logo from "../assets/Logo.png";
 
 const Nav = () => {
   return (
     <div className="nav__row">
       <nav>
-        <h1>LOGO</h1>
+        <figure className="nav__logo">
+          <img className="nav__logo--img" src={Logo} alt="" />
+        </figure>
         <ul className="nav__list">
           <li>Features</li>
           <li>Features</li>
@@ -12,7 +15,7 @@ const Nav = () => {
           <li>Features</li>
           <li>Features</li>
         </ul>
-        <button>Button</button>
+        <button className="nav__button">Propose A Bill</button>
       </nav>
     </div>
   );

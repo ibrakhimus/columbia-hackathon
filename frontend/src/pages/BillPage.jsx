@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const backendUrl = "http://127.0.0.1:5000";
 
-const BillPage = ({ bill, setBill }) => {
+const BillPage = ({ search, bill, setBill }) => {
 
   console.log(bill)
   const [news, setNews] = useState([]);
@@ -17,13 +17,13 @@ const BillPage = ({ bill, setBill }) => {
     // Fetch the current bill...
   
     // Fetch the similar bills
-    fetch(`${backendUrl}/search?term=${searchTerm}`)
+    fetch(`${backendUrl}/search?term=${search}`)
       .then((response) => response.json())
       .then((data) => {
-        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
+        const filteredBills = data.filter((bill) => bill.id !== bill);
         setSimilarBills(filteredBills.slice(0, 3));
       });
-  }, [searchTerm, currentBillId]);
+  }, [search, bill]);
 
   // const blobRef = useRef(null);
 
@@ -53,7 +53,7 @@ const BillPage = ({ bill, setBill }) => {
     fetch(`${backendUrl}/search?term=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
-        const filteredBills = data.filter((bill) => bill.id !== currentBillId);
+        const filteredBills = data.filter((bill) => bill.id !== bill);
         setSimilarBills(filteredBills.slice(0, 3));
       });
   }, [bill]); // Add bill to the dependency array
