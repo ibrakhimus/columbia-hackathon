@@ -76,7 +76,7 @@ async def get_timeline(bill_slug):
 async def support_email_data(short_name):
     return support_email(short_name)
 
-# param names: bill_info, bill_opinion, additional_info
+# param names: bill_info, bill_opinion, additional_info (optional)
 @cross_origin()
 @app.route("/gen_bill_proposal", methods = ["GET"])
 def gen_bill_proposal():
