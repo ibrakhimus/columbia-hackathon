@@ -1,5 +1,8 @@
 from openai import OpenAI
-gpt_client  = OpenAI(api_key = "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")
+import os 
+from dotenv import load_dotenv
+load_dotenv()
+gpt_client  = OpenAI(api_key = os.getenv("OPENAI_API_KEY"))
 
 def read_file (file):
     with open(file, 'r') as file:

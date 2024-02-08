@@ -2,11 +2,13 @@ import chromadb.utils.embedding_functions as embedding_functions
 import chromadb
 import json
 import ast
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 client = chromadb.PersistentClient(path = "./db/")
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-                api_key="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",
+                api_key=os.getenv("OPENAI_API_KEY"),
                 model_name="text-embedding-ada-002"
             )
 

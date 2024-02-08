@@ -2,6 +2,7 @@ chroma-hnswlib==0.7.3
 chromadb==0.4.14
 Flask==2.2.5
 Flask-Cors==4.0.0
+# Flask[async]==2.0.0
 openai==1.11.0
 gunicorn==20.1.0
 python-dotenv==1.0.0

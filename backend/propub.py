@@ -1,7 +1,10 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
+HEADERS = {'X-API-Key': os.getenv("PROPUBLICA_API_KEY")}
 BASEURL = "https://api.propublica.org/congress/v1/"
 CONGRES_SESSION = "117"
 SEARCH_BILL = "bills/search.json?"

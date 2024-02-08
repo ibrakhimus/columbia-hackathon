@@ -2,7 +2,8 @@ import json
 import os
 from pprint import pprint
 import requests
-
+from dotenv import load_dotenv
+load_dotenv()
 
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.
 
@@ -14,7 +15,7 @@ def image_search(query):
     # Construct a request
     mkt = 'en-US'
     params = {'q': query, 'mkt': mkt, "aspect": "Tall"}
-    headers = {'Ocp-Apim-Subscription-Key': "bc459722f264429897627d3b3dc675cd"}
+    headers = {'Ocp-Apim-Subscription-Key': os.getenv("BING_API_KEY")}
 
     response = requests.get(endpoint, headers=headers, params=params)
     response.raise_for_status()
@@ -24,7 +25,7 @@ def face_search(query):
     # Construct a request
     mkt = 'en-US'
     params = {'q': query, 'mkt': mkt, "imageContent": "Face"}
-    headers = {'Ocp-Apim-Subscription-Key': "bc459722f264429897627d3b3dc675cd"}
+    headers = {'Ocp-Apim-Subscription-Key': os.getenv("BING_API_KEY")}
 
     response = requests.get(endpoint, headers=headers, params=params)
     response.raise_for_status()

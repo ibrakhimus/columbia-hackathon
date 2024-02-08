@@ -6,8 +6,11 @@ from doc_query import bill_search
 from auto_email import support_email
 from flask_cors import CORS, cross_origin
 from gen_proposal import create_proposal
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-HEADERS = {'X-API-Key': 'flXU8LPnz82pSjKUSQEWWQd4YfpKuLfDGe9DXw50'}
+HEADERS = {'X-API-Key': os.getenv("PROPUBLICA_API_KEY")}
 BASEURL = "https://api.propublica.org/congress/v1/"
 CONGRES_SESSION = "117"
 SEARCH_BILL = "bills/search.json?"
@@ -40,9 +43,9 @@ def get_face(query):
 # returns an array of objects
 @cross_origin()
 @app.route('/get_news/<query>/<amount>', methods=['GET'])
-async def get_news(query, amount):    
+async def get_news(query: str, amount: int) -> json:    
     response = requests.get("https://api.worldnewsapi.com/search-news", params={
-        "api-key": "6057a3608cd44bf0a984e46525ece3ae",
+        "api-key": os.getenv("WORLD_NEWS_API_KEY"),
         "text": query, 
         "number": amount,
         "source-countries": "us",
