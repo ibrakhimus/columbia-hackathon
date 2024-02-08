@@ -5,6 +5,7 @@ frontend/node_modules
 /.pnp
 .pnp.js
 frontend/pnpm-lock.yaml
+backend/backend
 
 # testing
 /coverage
