@@ -53,8 +53,14 @@ async def get_news(query: str, amount: int) -> json:
         "sort": "publish-time",
         "sort-direction": "DESC"
         })
-    print(response.json())
-    return response.json()["news"]
+    if(response.status_code not in range(200, 299)):
+        return f"error with world news api\n{response}"
+    elif (response == ""):
+        print(f"Response: {response}")
+        return "error with world news api"
+    else:
+        print(response.json())
+        return response.json()["news"]
 
 @cross_origin()
 @app.route('/get_contact_info', methods=['GET'])
