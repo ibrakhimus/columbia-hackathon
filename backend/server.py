@@ -59,7 +59,7 @@ async def get_news(query: str, amount: int) -> json:
         print(f"Response: {response}")
         return "error with world news api"
     else:
-        print(response.json())
+        # print(response.json())
         return response.json()["news"]
 
 @cross_origin()
