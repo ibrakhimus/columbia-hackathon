@@ -16,4 +16,5 @@ Your Congress is a web-based platform that helps users find politicians aligned 
 
 # How to Run!
 - `cd` to the frontend directory
+  - `npm i`
   - `npm run dev`  
